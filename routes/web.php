@@ -18,7 +18,8 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 
 Route::get('/', \App\Livewire\HomeComponent::class)->name('home');
 //Route::middleware('auth')->group(function () {
-    Route::get('/admin/users', \App\Livewire\Admin\UserComponent::class)->name('admin.users');
+    Route::get('/admin/users', \App\Livewire\Admin\BloggerComponent::class)->name('admin.users');
+//    Route::get('/admin/users', \App\Livewire\Admin\UserComponent::class)->name('admin.users');
     Route::get('/admin/categories', \App\Livewire\Admin\CategoryComponent::class)->name('admin.categories');
 //});
 Route::middleware('guest')->group(function () {

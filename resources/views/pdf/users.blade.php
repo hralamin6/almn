@@ -31,7 +31,7 @@
             background-color: #f2f2f2;
         }
     </style>
-    @vite(['resources/css/app.css'])
+{{--    @vite(['resources/css/app.css'])--}}
 
 </head>
 <body>
@@ -65,7 +65,7 @@
         <td>Michael Johnson</td>
         <td> <a href="{{route('home')}}">asdf</a> michael@example.com</td>
         <td><img src="https://imamhujur.hralamin.xyz/media/2/oReX6ahv00LFvh7Tx6XFZhXrBWk5RK-metaU2NyZWVuc2hvdF8yMDI0MDMyNy0wMDQ0MjVfQ3JlQXJ0LnBuZw==-.pngg" height="100px" width="100px"/></td>
-{{--        <td><img src="{{asset('images/avatar.jpg')}}" height="100px" width="100px"/></td>--}}
+        <td><img src="{{asset('images/avatar.jpg')}}" height="100px" width="100px"/></td>
     </tr>
     <!-- Add more rows as needed -->
     </tbody>
