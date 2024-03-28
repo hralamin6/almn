@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\setup;
+use App\Models\Setup;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +32,6 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make('000000')
         ]);
         User::factory()->count(10)->create();
-        setup::factory()->count(1)->create();
+        Setup::factory()->count(1)->create();
     }
 }

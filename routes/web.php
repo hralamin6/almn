@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\setup;
+use App\Models\Setup;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use misterspelik\LaravelPdf\Facades\Pdf;
