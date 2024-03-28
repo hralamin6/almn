@@ -43,12 +43,14 @@ Route::middleware('auth')->group(function () {
         ->name('confirm');
 });
 Route::get('/pdf', function () {
-    return response()->streamDownload(function () {
         $items= User::get();
         $setup = Setup::first();
         $pdf = Pdf::loadView('pdf.users', compact('items', 'setup'));
         return $pdf->stream('users.pdf');
-    }, 'users.pdf');
+});
+Route::get('/users', function () {
+    $items= User::get();
+    $setup = Setup::first();
 
-
+    return view('pdf.users', compact('items', 'setup'));
 });
