@@ -4,44 +4,127 @@ namespace App\Livewire\Admin;
 
 use App\Models\Setup;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 use misterspelik\LaravelPdf\Facades\Pdf;
 
 class UserComponent extends Component
 {
-    use WithPagination;
-//    use LivewireAlert;
-//    public $brand;
-//    public $name, $status='active';
+
+    use WithPagination, WithoutUrlPagination;
+    use LivewireAlert;
     public $selectedRows = [];
     public $selectPageRows = false;
     public $itemPerPage;
     public $orderBy = 'id';
-    public $searchBy = 'id';
+    public $searchBy = 'name';
     public $orderDirection = 'asc';
     public $search = '';
     protected $queryString = [
         'search' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
-    protected $listeners = ['deleteMultiple', 'deleteSingle'];
+    public $user;
+    public $name,$email,  $phone, $address, $bio, $status='active', $type='user', $facebook, $twitter, $instagram, $password, $confirmPassword;
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+    public function saveData()
+    {
+        $data = $this->validate([
+            'name' => ['required', 'min:2', 'max:33'],
+            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
+            'status' => ['required'],
+            'type' => ['required'],
+            'bio' => ['nullable', 'min:10'],
+            'address' => ['nullable', 'min:10'],
+            'facebook' => ['nullable', 'url'],
+            'twitter' => ['nullable',  'url'],
+            'instagram' => ['nullable', 'url'],
+            'password' => ['required', 'min:8', 'same:confirmPassword'],
+            'email' => ['required', 'min:2', 'max:44', Rule::unique('users', 'email')]
+        ]);
+        $data['password'] = Hash::make($this->password);
+
+        $data = User::create($data);
+        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
+//        $this->goToPage($this->getDataProperty()->lastPage());
+//        $this->emit('dataAdded', ['dataId' => 'item-id-'.$data->id]);
+        $this->alert('success', __('Data updated successfully'));
+
+    }
+    public function loadData(User $user)
+    {
+        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
+//        $this->emit('openEditModal');
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->phone = $user->phone;
+        $this->bio = $user->bio;
+        $this->address = $user->address;
+        $this->status = $user->status;
+        $this->type = $user->type;
+        $this->facebook = $user->facebook;
+        $this->instagram = $user->instagram;
+        $this->twitter = $user->twitter;
+        $this->user = $user;
+    }
+    public function editData()
+    {
+        $data = $this->validate([
+            'name' => ['required', 'min:2', 'max:33'],
+            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
+            'status' => ['required'],
+            'type' => ['required'],
+            'bio' => ['nullable', 'min:10'],
+            'address' => ['nullable', 'min:10'],
+            'facebook' => ['nullable', 'url'],
+            'twitter' => ['nullable',  'url'],
+            'instagram' => ['nullable', 'url'],
+            'password' => ['nullable', 'min:8', 'same:confirmPassword'],
+            'email' => ['required', 'min:2', 'max:44', Rule::unique('users', 'email')->ignore($this->user['id'])]
+        ]);
+//                dd($data['password']);
+        $data['password'] = $data['password']==null? $this->user->password:Hash::make($data['password']);
+
+        $this->user->update($data);
+//        $this->emit('dataAdded', ['dataId' => 'item-id-'.$this->user->id]);
+        $this->alert('success', __('Data updated successfully'));
+        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
+    }
     public function getDataProperty()
     {
-        return User::where($this->searchBy, 'like', '%'.$this->search.'%')->orderBy($this->orderBy, $this->orderDirection)->paginate($this->itemPerPage, ['id', 'name', 'status', 'created_at'])->withQueryString();
+        return User::where($this->searchBy, 'like', '%'.$this->search.'%')->orderBy($this->orderBy, $this->orderDirection)->paginate($this->itemPerPage)->withQueryString();
     }
     public function generate_pdf()
     {
         return response()->streamDownload(function () {
-            $items= User::where('name', 'like', '%'.$this->search.'%')->where('type', 'user')->orderBy($this->orderBy, $this->orderDirection)->get();
+            $items= $this->data;
             $setup = Setup::first();
             $pdf = Pdf::loadView('pdf.users', compact('items', 'setup'));
             return $pdf->stream('users.pdf');
         }, 'users.pdf');
     }
+    public function deleteMultiple()
+    {
+        User::whereIn('id', $this->selectedRows)->delete();
+        $this->selectPageRows = false;
+        $this->selectedRows = [];
+        $this->alert('success', __('Data deleted successfully'));
+    }
+    public function deleteSingle(User $user)
+    {
+        $user->delete();
+        $this->alert('success', __('Data deleted successfully'));
+    }
     public function render()
     {
+        $this->authorize('isAdmin');
         $items = $this->data;
 
         return view('livewire.admin.user-component', compact('items'));

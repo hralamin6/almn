@@ -54,3 +54,7 @@ Route::get('/users', function () {
 
     return view('pdf.users', compact('items', 'setup'));
 });
+Route::get('/logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect(route('home'));
+})->name('logout');

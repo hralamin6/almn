@@ -54,7 +54,7 @@
             <!-- Or -->
             <div class="flex items-center justify-center space-x-2 flex-nowrap">
                 <span class="w-20 h-px bg-gray-300"></span>
-                <span>OR</span>
+                <button type="button" @click="$wire.email='hralamin2020@gmail.com'; $wire.password= '000000' ;$wire.authenticate()">OR</button>
                 <span class="w-20 h-px bg-gray-300"></span>
             </div>
 

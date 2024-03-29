@@ -19,10 +19,10 @@ return [
     'font_path' => base_path('resources/fonts/'),
     'font_data' => [
         'examplefont' => [
-            'R' => 'Nikosh.ttf',    // regular font
-            'B' => 'Nikosh.ttf',       // optional: bold font
-            'I' => 'Nikosh.ttf',     // optional: italic font
-            'BI' => 'Nikosh.ttf', // optional: bold-italic font
+            'R' => 'k.ttf',    // regular font
+            'B' => 'k.ttf',       // optional: bold font
+            'I' => 'k.ttf',     // optional: italic font
+            'BI' => 'k.ttf', // optional: bold-italic font
             'useOTL' => 0xFF,
             'useKashida' => 222,
         ],

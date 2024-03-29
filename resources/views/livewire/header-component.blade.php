@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between p-2 border-b dark:border-primary-darker">
         <!-- Mobile menu button -->
         <button
-            @click="isMobileMainMenuOpen = !isMobileMainMenuOpen"
+            @click="sidebarOpen = !sidebarOpen"
             class="p-1 transition-colors duration-200 rounded-md text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark md:hidden focus:outline-none focus:ring"
         >
             <span class="sr-only">Open main manu</span>

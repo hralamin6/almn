@@ -81,6 +81,7 @@
 
                 return {
                     loading: true,
+                    sidebarOpen: false,
                     isDark: getTheme(),
                     toggleTheme() {
                         this.isDark = !this.isDark
@@ -141,7 +142,7 @@
                 }
             }
         </script>
-
+@stack('js')
 
     </head>
     <body>
@@ -761,6 +762,8 @@
 
     @livewireScripts
 
+    <script src="{{ asset('js/sa.js') }}"></script>
+    <x-livewire-alert::scripts />
 
     </body>
 </html>
