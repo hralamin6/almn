@@ -7,7 +7,6 @@
         <title>{{ $title ?? 'Page Title' }}</title>
         @vite(['resources/css/app.css'])
 
-        @livewireStyles
         @vite(['resources/js/app.js'])
         <script>
             const setup = () => {
@@ -760,7 +759,6 @@
         </div>
     </div>
 
-    @livewireScripts
 
     <script src="{{ asset('js/sa.js') }}"></script>
     <x-livewire-alert::scripts />

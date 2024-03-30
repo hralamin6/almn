@@ -5,7 +5,7 @@
 
             <div class="flex flex-col h-full">
                 <!-- Sidebar links -->
-                <nav aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto capitalize">
+                <nav @click="sidebarOpen = false" aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto capitalize">
                     <!-- Dashboards links -->
                     @php
                         if (!is_null(request()->route())) {

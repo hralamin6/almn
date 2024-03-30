@@ -15,17 +15,19 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 class UserComponent extends Component
 {
 
-    use WithPagination, WithoutUrlPagination;
+    use WithPagination;
     use LivewireAlert;
     public $selectedRows = [];
     public $selectPageRows = false;
-    public $itemPerPage;
+    public $itemPerPage=1000;
     public $orderBy = 'id';
     public $searchBy = 'name';
     public $orderDirection = 'asc';
     public $search = '';
+    public $itemStatus;
     protected $queryString = [
         'search' => ['except' => ''],
+        'itemStatus' => ['except' => null],
     ];
 
     public $user;
@@ -33,6 +35,25 @@ class UserComponent extends Component
     public function updatedSearch()
     {
         $this->resetPage();
+    }
+    public function updatedItemPerPage()
+    {
+        $this->resetPage();
+    }
+    public function updatedSelectPageRows($value)
+    {
+        if ($value) {
+            $this->selectedRows = $this->data->pluck('id')->map(function ($id) {
+                return (string) $id;
+            });
+        } else {
+            $this->reset('selectedRows', 'selectPageRows');
+        }
+    }
+    public function changeStatus(User $user)
+    {
+        $user->status=='active'?$user->update(['status'=>'inactive']):$user->update(['status'=>'active']);
+        $this->alert('success', __('Data updated successfully'));
     }
     public function saveData()
     {
@@ -99,7 +120,12 @@ class UserComponent extends Component
     }
     public function getDataProperty()
     {
-        return User::where($this->searchBy, 'like', '%'.$this->search.'%')->orderBy($this->orderBy, $this->orderDirection)->paginate($this->itemPerPage)->withQueryString();
+        return User::where($this->searchBy, 'like', '%'.$this->search.'%')
+            ->orderBy($this->orderBy, $this->orderDirection)
+            ->when($this->itemStatus, function ($query) {
+                return $query->where('status', $this->itemStatus);
+            })
+            ->paginate($this->itemPerPage)->withQueryString();
     }
     public function generate_pdf()
     {
@@ -121,6 +147,11 @@ class UserComponent extends Component
     {
         $user->delete();
         $this->alert('success', __('Data deleted successfully'));
+    }
+    public function orderByDirection($field)
+    {
+        $this->orderBy = $field;
+        $this->orderDirection==='asc'? $this->orderDirection='desc': $this->orderDirection='asc';
     }
     public function render()
     {

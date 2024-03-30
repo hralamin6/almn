@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password'=>Hash::make('000000')
         ]);
-        User::factory()->count(10)->create();
+        User::factory()->count(1000)->create();
         Setup::factory()->count(1)->create();
     }
 }
