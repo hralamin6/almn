@@ -17,16 +17,16 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 */
 
 Route::get('/', \App\Livewire\HomeComponent::class)->name('home');
-//Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/admin/users', \App\Livewire\Admin\UserComponent::class)->name('admin.users');
     Route::get('/admin/categories', \App\Livewire\Admin\CategoryComponent::class)->name('admin.categories');
-//});
+});
 Route::middleware('guest')->group(function () {
-    Route::get('login', \App\Livewire\Auth\Login::class)
-        ->name('login');
+    Route::get('login', \App\Livewire\Auth\Login::class)->name('login');
+    Route::get('register', \App\Livewire\Auth\Register::class)->name('register');
+    Route::get('auth/{provider}/redirect', [\App\Http\Controllers\SocialiteController::class, 'loginSocial'])->name('socialite.auth');
+    Route::get('auth/{provider}/callback', [\App\Http\Controllers\SocialiteController::class, 'callbackSocial'])->name('socialite.callback');
 
-    Route::get('register', \App\Livewire\Auth\Register::class)
-        ->name('register');
 });
 Route::get('password/reset', \App\Livewire\Auth\Email::class)
     ->name('email');

@@ -60,9 +60,7 @@
 
             <!-- Social login links -->
             <!-- Brand icons src https://boxicons.com -->
-            <a
-                href="#"
-                class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
+            <a href="{{ route('socialite.auth', 'google') }}" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
             >
                 <svg
                     aria-hidden="true"

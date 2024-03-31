@@ -19,7 +19,8 @@ class UserComponent extends Component
     use LivewireAlert;
     public $selectedRows = [];
     public $selectPageRows = false;
-    public $itemPerPage=1000;
+    public $loadId = 0;
+    public $itemPerPage=10;
     public $orderBy = 'id';
     public $searchBy = 'name';
     public $orderDirection = 'asc';
@@ -55,6 +56,11 @@ class UserComponent extends Component
         $user->status=='active'?$user->update(['status'=>'inactive']):$user->update(['status'=>'active']);
         $this->alert('success', __('Data updated successfully'));
     }
+    public function resetData()
+    {
+        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
+    }
+
     public function saveData()
     {
         $data = $this->validate([
@@ -73,16 +79,17 @@ class UserComponent extends Component
         $data['password'] = Hash::make($this->password);
 
         $data = User::create($data);
-        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
-//        $this->goToPage($this->getDataProperty()->lastPage());
-//        $this->emit('dataAdded', ['dataId' => 'item-id-'.$data->id]);
+        $var = $data->id -2  ;
+        $this->loadId = $data->id;
+        $this->goToPage($this->getDataProperty()->lastPage());
         $this->alert('success', __('Data updated successfully'));
+        $this->resetData();
+        $this->dispatch('dataAdded', dataId: "item-id-$var");
 
     }
     public function loadData(User $user)
     {
-        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
-//        $this->emit('openEditModal');
+        $this->resetData();
         $this->name = $user->name;
         $this->email = $user->email;
         $this->phone = $user->phone;
@@ -110,13 +117,14 @@ class UserComponent extends Component
             'password' => ['nullable', 'min:8', 'same:confirmPassword'],
             'email' => ['required', 'min:2', 'max:44', Rule::unique('users', 'email')->ignore($this->user['id'])]
         ]);
-//                dd($data['password']);
         $data['password'] = $data['password']==null? $this->user->password:Hash::make($data['password']);
 
         $this->user->update($data);
-//        $this->emit('dataAdded', ['dataId' => 'item-id-'.$this->user->id]);
+        $var = $this->user->id;
+        $this->loadId = $this->user->id;
+        $this->dispatch('dataAdded', dataId: "item-id-$var");
         $this->alert('success', __('Data updated successfully'));
-        $this->reset('name', 'email', 'phone', 'bio', 'address', 'status', 'type', 'facebook', 'twitter', 'instagram', 'password', 'confirmPassword');
+        $this->resetData();
     }
     public function getDataProperty()
     {

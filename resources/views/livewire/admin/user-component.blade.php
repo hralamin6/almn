@@ -1,4 +1,4 @@
-<div class="items-center justify-center p-2 min-h-screen capitalize" x-data="user()">
+<div  class="items-center justify-center p-2 min-h-screen capitalize" x-data="user()">
     <main class="h-full">
         <div class="sm:flex sm:items-center sm:justify-between">
             <div>
@@ -96,7 +96,7 @@
                                                 <div x-show="bulk"
                                                      class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
                                                      @click.outside="bulk= false">
-                                                    <a @click="$dispatch('deleteMultiple', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error' })"
+                                                    <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
                                                        class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                         Delete </a>
                                                     {{--                                                    <a wire:click.prevent="" class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Your projects </a>--}}
@@ -122,10 +122,9 @@
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-darker">
                                 @forelse($items as $i => $item)
 
-                                    <tr id="id_{{$item->id}}" wire:key="{{$item->id}}">
-                                        <td class="pl-2"><input x-model="rows" value="{{$item->id}}"
-                                                                id="{{ $item->id }}" type="checkbox"
-                                                                class="justify-between text-blue-500 border-gray-300 rounded dark:bg-darker dark:ring-offset-gray-900 dark:border-gray-700">
+                                    <tr @if($loadId==$item->id) wire:scroll @endif id="item-id-{{$item->id}}" class="@if($loadId==$item->id) dark:bg-gray-500 bg-green-100 animate-pulse @endif text-gray-700 dark:text-gray-300 capitalize" :class="{'bg-gray-200 dark:bg-gray-600': rows.includes('{{$item->id}}') }">
+                                        <td class="pl-2">
+                                            <input x-model="rows" value="{{$item->id}}" id="{{ $item->id }}" type="checkbox" class="justify-between text-blue-500 border-gray-300 rounded dark:bg-darker dark:ring-offset-gray-900 dark:border-gray-700">
                                         </td>
 
                                         <td class="px-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -146,7 +145,7 @@
                                                 class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
-                                                <h2 class="text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</h2>
+                                                <button type="button" wire:click="changeStatus({{ $item->id }})" class="cursor-pointer text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</button>
                                             </div>
                                         </td>
 
@@ -162,7 +161,7 @@
                                                 </button>
 
                                                 <button
-                                                    @click.prevent="$dispatch('deleteSingle', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error', itemId: {{$item->id}} })"
+                                                    @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteSingle', itemId: {{$item->id}} })"
                                                     class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
                                                     <x-h-o-trash class="text-red-400"/>
                                                 </button>
@@ -202,7 +201,7 @@
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="input">@lang('name')</label>
-                            <x-input errorName="name" errorName="name" x-ref="input" id="input" wire:model="name"
+                            <x-input errorName="name" errorName="name" x-ref="inputName" id="input" wire:model="name"
                                      type="text"/>
                         </div>
                         <div>
@@ -282,20 +281,33 @@
     <script>
             Alpine.data('user', () => ({
                 init() {
-                    // This code will be executed before Alpine
-                    // initializes the rest of the component.
+                    $wire.on('dataAdded', (e) => {
+                        this.isOpen = false
+                            this.editMode = false
+                        element = document.getElementById(e.dataId)
+                        if (element) {
+                            console.log(element)
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        setTimeout(() => {
+                            @this.set('loadId', 0);
+                        }, 5000)
+                    })
                 },
                 isOpen: false,
                 editMode: false,
                 rows: @entangle('selectedRows'),
                 selectPage: @entangle('selectPageRows').live,
                 toggleModal() {
-                    this.isOpen = !this.isOpen
+                    this.isOpen = !this.isOpen;
+                    this.$nextTick(() => {
+                        this.$refs.inputName.focus()
+                    })
                 },
                 closeModal() {
                     this.isOpen = false;
                     this.editMode = false;
-                    // $wire.resetData()
+                    $wire.resetData()
                 },
                 editModal(id) {
                     this.$wire.loadData(id);
@@ -303,8 +315,9 @@
                     this.editMode = true;
                 }
             }))
-        document.addEventListener('deleteSingle', function (event) {
+        document.addEventListener('delete', function (event) {
             itemId = event.detail.itemId
+            actionName = event.detail.actionName
             Swal.fire({
                 title: event.detail.title,
                 text: event.detail.text,
@@ -315,22 +328,7 @@
 
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $wire.deleteSingle(itemId)
-                }
-            })
-        });
-        document.addEventListener('deleteMultiple', function (event) {
-            Swal.fire({
-                title: event.detail.title,
-                text: event.detail.text,
-                icon: event.detail.icon,
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $wire.deleteMultiple()
+                    $wire[actionName](itemId)
                 }
             })
         });

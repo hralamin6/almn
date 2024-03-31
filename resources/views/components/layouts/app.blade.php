@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         <title>{{ $title ?? 'Page Title' }}</title>
+        @laravelPWA
         @vite(['resources/css/app.css'])
 
         @vite(['resources/js/app.js'])
