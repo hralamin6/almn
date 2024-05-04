@@ -20,7 +20,7 @@ class UserComponent extends Component
     public $selectedRows = [];
     public $selectPageRows = false;
     public $loadId = 0;
-    public $itemPerPage=10;
+    public $itemPerPage=200;
     public $orderBy = 'id';
     public $searchBy = 'name';
     public $orderDirection = 'asc';
@@ -81,10 +81,10 @@ class UserComponent extends Component
         $data = User::create($data);
         $var = $data->id -2  ;
         $this->loadId = $data->id;
+        $this->dispatch('dataAdded', dataId: "item-id-$var");
         $this->goToPage($this->getDataProperty()->lastPage());
         $this->alert('success', __('Data updated successfully'));
         $this->resetData();
-        $this->dispatch('dataAdded', dataId: "item-id-$var");
 
     }
     public function loadData(User $user)
@@ -163,7 +163,7 @@ class UserComponent extends Component
     }
     public function render()
     {
-        $this->authorize('isAdmin');
+//        $this->authorize('isAdmin');
         $items = $this->data;
 
         return view('livewire.admin.user-component', compact('items'));

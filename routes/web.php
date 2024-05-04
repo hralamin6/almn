@@ -16,11 +16,15 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 |
 */
 
-Route::get('/', \App\Livewire\HomeComponent::class)->name('home');
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/users', \App\Livewire\Admin\UserComponent::class)->name('admin.users');
-    Route::get('/admin/categories', \App\Livewire\Admin\CategoryComponent::class)->name('admin.categories');
+Route::middleware('admin')->group(function () {
+    Route::get('/dashboard', \App\Livewire\HomeComponent::class)->name('dashboard.home');
+    Route::get('/dashboard/update-password', \App\Livewire\Admin\PasswordUpdateComponent::class)->name('dashboard.update.password');
+    Route::get('/dashboard/update-profile', \App\Livewire\Admin\ProfileUpdateComponent::class)->name('dashboard.update.profile');
+    Route::get('/dashboard/vendor-details', \App\Livewire\Admin\VendorDetailsComponent::class)->name('dashboard.vendor.details');
+    Route::get('/dashboard/users', \App\Livewire\Admin\UserComponent::class)->name('dashboard.users');
+    Route::get('/dashboard/categories', \App\Livewire\Admin\CategoryComponent::class)->name('dashboard.categories');
 });
+Route::get('dashboard/login', \App\Livewire\Auth\Adminlogin::class)->name('dashboard.login');
 Route::middleware('guest')->group(function () {
     Route::get('login', \App\Livewire\Auth\Login::class)->name('login');
     Route::get('register', \App\Livewire\Auth\Register::class)->name('register');
@@ -54,7 +58,7 @@ Route::get('/users', function () {
 
     return view('pdf.users', compact('items', 'setup'));
 });
-Route::get('/logout', function () {
-    \Illuminate\Support\Facades\Auth::logout();
-    return redirect(route('home'));
-})->name('logout');
+Route::get('/dashboard/logout', function () {
+    \Illuminate\Support\Facades\Auth::guard('admin')->logout();
+    return redirect(route('dashboard.home'));
+})->name('dashboard.logout');

@@ -14,13 +14,13 @@
                         }
                     @endphp
 
-                    <a href="{{route('home')}}" wire:navigate class="{{Route::is('home')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
-                        <span aria-hidden="true"><x-h-o-home class="w-5 h-5"/></span>
-                        <span class="ml-2 text-sm"> @lang('home') </span>
+                    <a href="{{route('dashboard.home')}}" wire:navigate class="{{Route::is('home')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                        <span aria-hidden="true"><i class='bx bx-home-alt bx-tada' ></i></span>
+                        <span class="ml-2 "> @lang('home') </span>
                     </a>
-                    @auth
-                        @can('isAdmin')
-                            <div @if($routePrefix == "admin") x-data="{ isActive: true, open: true}" @else x-data="{ isActive: false, open: false}" @endif>                <!-- active & hover classes 'bg-primary-100 dark:bg-primary' -->
+                    @auth('admin')
+{{--                        @can('isAdmin')--}}
+                            <div @if($routePrefix == "dashboard") x-data="{ isActive: true, open: true}" @else x-data="{ isActive: false, open: false}" @endif>                <!-- active & hover classes 'bg-primary-100 dark:bg-primary' -->
                                 <a
                                     href="#"
                                     @click="$event.preventDefault(); open = !open"
@@ -30,9 +30,9 @@
                                     aria-haspopup="true"
                                     :aria-expanded="(open || isActive) ? 'true' : 'false'"
                                 >
-                  <span aria-hidden="true"><x-h-c-presentation-chart-bar/>
+                  <span aria-hidden="true"><i class='bx bxs-dashboard bx-tada' ></i>
                   </span>
-                                    <span class="ml-2 text-sm"> Dashboards </span>
+                                    <span class="ml-2 "> Dashboards </span>
                                     <span class="ml-auto" aria-hidden="true">
                     <!-- active class 'rotate-180' -->
                     <svg
@@ -51,36 +51,52 @@
                                     <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                                     <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
                                     <a
-                                        href="{{route('admin.users')}}" wire:navigate role="menuitem"
-                                        class="block p-2 text-sm {{Route::is('admin.users')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                                        href="{{route('dashboard.users')}}" wire:navigate role="menuitem"
+                                        class="block p-2  {{Route::is('dashboard.users')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                                     >
                                         @lang('users')
                                     </a>
                                     <a
-                                        href="{{route('admin.categories')}}" wire:navigate role="menuitem"
-                                        class="block p-2 text-sm {{Route::is('admin.categories')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                                        href="{{route('dashboard.update.password')}}" wire:navigate role="menuitem"
+                                        class="block p-2  {{Route::is('dashboard.update.password')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                                    >
+                                        @lang('update password')
+                                    <a
+                                        href="{{route('dashboard.update.profile')}}" wire:navigate role="menuitem"
+                                        class="block p-2  {{Route::is('dashboard.update.profile')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                                    >
+                                        @lang('update profile')
+                                    </a>
+                                    <a
+                                        href="{{route('dashboard.vendor.details')}}" wire:navigate role="menuitem"
+                                        class="block p-2  {{Route::is('dashboard.vendor.details')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                                    >
+                                        @lang('vendor details')
+                                    </a>
+                                    <a
+                                        href="{{route('dashboard.categories')}}" wire:navigate role="menuitem"
+                                        class="block p-2  {{Route::is('dashboard.categories')?'text-gray-700 dark:text-light':'text-gray-400'}} transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
                                     >
                                         @lang('categories')
                                     </a>
                                 </div>
                             </div>
-                        @endcan
+{{--                        @endcan--}}
 
-                        <a href="{{route('logout')}}" wire:navigate class="{{Route::is('login')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
-                            <span aria-hidden="true"><x-h-o-arrow-left-start-on-rectangle class="w-5 h-5"/></span>
-                            <span class="ml-2 text-sm"> @lang('logout') </span>
+                        <a href="{{route('dashboard.logout')}}" wire:navigate class="{{Route::is('login')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                            <span aria-hidden="true"><i class='bx bx-log-out-circle bx-tada' ></i></span>
+                            <span class="ml-2 "> @lang('logout') </span>
                         </a>
                     @endauth
 
                     @guest
-
                         <a href="{{route('login')}}" wire:navigate class="{{Route::is('login')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
-                            <span aria-hidden="true"><x-h-o-arrow-right-start-on-rectangle class="w-5 h-5"/></span>
-                            <span class="ml-2 text-sm"> @lang('login') </span>
+                            <span aria-hidden="true"><i class='bx bx-log-in-circle bx-tada' ></i></span>
+                            <span class="ml-2 "> @lang('login') </span>
                         </a>
                         <a href="{{route('register')}}" wire:navigate class="{{Route::is('register')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
-                            <span aria-hidden="true"><x-h-o-user-plus class="w-5 h-5"/></span>
-                            <span class="ml-2 text-sm"> @lang('register') </span>
+                            <span aria-hidden="true"><i class='bx bx-user-plus bx-tada' ></i></span>
+                            <span class="ml-2 "> @lang('register') </span>
                         </a>
                     @endguest
 
@@ -91,7 +107,7 @@
                     <button
                         @click="openSettingsPanel"
                         type="button"
-                        class="flex items-center justify-center w-full px-4 py-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+                        class="flex items-center justify-center w-full px-4 py-2  text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
                     >
                 <span aria-hidden="true">
                   <svg

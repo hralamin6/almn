@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -26,12 +27,22 @@ class SocialiteController extends Controller
         $this->validateProvider($request);
 
         $response = Socialite::driver($provider)->user();
+        if (!is_null(request()->route())) {
+            $pageName = request()->route()->getName();
+            $routePrefix = explode('.', $pageName)[0] ?? '';
+        }
+        if($routePrefix == "dashboard"){
+            $user = Admin::firstOrCreate(
+                ['email' => $response->getEmail()],
+                ['password' => Str::password(), 'name' => $response->getName() ?? $response->getNickname()]
+            );
+        }else{
+            $user = User::firstOrCreate(
+                ['email' => $response->getEmail()],
+                ['password' => Str::password(), 'name' => $response->getName() ?? $response->getNickname()]
 
-        $user = User::firstOrCreate(
-            ['email' => $response->getEmail()],
-            ['password' => Str::password(), 'name' => $response->getName() ?? $response->getNickname()]
-
-        );
+            );
+        }
         $data = [$provider . '_id' => $response->getId()];
 
         if ($user->wasRecentlyCreated) {
@@ -39,10 +50,13 @@ class SocialiteController extends Controller
         }
 
         $user->update($data);
-
-        Auth::login($user, remember: true);
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if($routePrefix == "dashboard") {
+            Auth::guard('admin')->login($user, remember: true);
+            return redirect()->intended(RouteServiceProvider::DashboardHome);
+        }else{
+            Auth::login($user, remember: true);
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 
     protected function validateProvider(Request $request): array
