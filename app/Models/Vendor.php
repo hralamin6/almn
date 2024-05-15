@@ -12,15 +12,15 @@ class Vendor extends Model
     use HasFactory;
     public function admin()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class)->withDefault();
     }
     public function vendordetail()
     {
-        return $this->hasOne(VendorBusinessDetail::class);
+        return $this->hasOne(VendorBusinessDetail::class)->withDefault();
     }
     public function bankDetail()
     {
-        return $this->hasOne(VendorBankDetail::class);
+        return $this->hasOne(VendorBankDetail::class)->withDefault();
     }
 
 

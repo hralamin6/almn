@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorBankDetail;
 use App\Models\VendorBusinessDetail;
+use App\Models\Word;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,7 +27,18 @@ class DatabaseSeeder extends Seeder
             'status'=>1,
             'email'=>'hralamin2020@gmail.com',
             'password'=>Hash::make('000000')
-        ]);
+        ])->each(function ($user){
+            Vendor::factory(1)->create([
+                'admin_id' => $user->id,
+            ])->each(function ($vendor){
+                VendorBusinessDetail::factory(1)->create([
+                    'vendor_id' => $vendor->id,
+                ]);
+                VendorBankDetail::factory(1)->create([
+                    'vendor_id' => $vendor->id,
+                ]);
+            });
+        });
         User::create([
             'name'=>'hr alamin',
             'type'=>'admin',
@@ -44,6 +56,7 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make('000000')
         ]);
         Setup::factory()->count(1)->create();
+        Word::factory()->count(30)->create();
         \App\Models\Admin::factory(1)->create([
         ])->each(function ($user){
             Vendor::factory(1)->create([
