@@ -57,6 +57,11 @@ class ArabicWordComponent extends Component
         $word->status=='active'?$word->update(['status'=>'inactive']):$word->update(['status'=>'active']);
         $this->alert('success', __('Data updated successfully'));
     }
+    public function addToWishlist(Word $word)
+    {
+        auth()->user()->words()->toggle($word->id);
+        $this->alert('success', __('Data updated successfully'));
+    }
     public function resetData()
     {
         $this->reset('name', 'meaning', 'female_name', 'male_name', 'pop', 'status', 'gender');
@@ -68,9 +73,9 @@ class ArabicWordComponent extends Component
             'name' => ['required', 'min:2', 'max:33'],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable', 'min:10'],
-            'female_name' => ['nullable', 'min:10'],
-            'meaning' => ['nullable', 'min:10'],
+            'male_name' => ['nullable'],
+            'female_name' => ['nullable'],
+            'meaning' => ['nullable'],
             'pop' => ['required'],
 
         ]);
@@ -101,9 +106,9 @@ class ArabicWordComponent extends Component
             'name' => ['required', 'min:2', 'max:33'],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable', 'min:10'],
-            'female_name' => ['nullable', 'min:10'],
-            'meaning' => ['nullable', 'min:10'],
+            'male_name' => ['nullable'],
+            'female_name' => ['nullable'],
+            'meaning' => ['nullable'],
             'pop' => ['required'],
             ]);
         $this->word->update($data);
@@ -152,7 +157,6 @@ class ArabicWordComponent extends Component
     {
 //        $this->authorize('isAdmin');
         $items = $this->data;
-
         return view('livewire.arabic-word-component', compact('items'));
     }
 }

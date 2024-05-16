@@ -15,7 +15,7 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/arabic-words', \App\Livewire\ArabicWordComponent::class)->name('arabic.words');
+Route::get('/arabic-words', \App\Livewire\ArabicWordComponent::class)->name('home');
 
 Route::middleware('admin')->group(function () {
     Route::get('/dashboard', \App\Livewire\HomeComponent::class)->name('dashboard.home');

@@ -164,6 +164,14 @@
                                                         class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                                     <x-h-o-pencil-square class="text-green-400"/>
                                                 </button>
+                                                <button wire:click="addToWishlist('{{$item->id}}')"
+                                                        class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                                                    @if(auth()->user()->words()->where('word_id',$item->id)->first())
+                                                        <x-h-s-heart class="text-red-400"/>
+                                                    @else
+                                                        <x-h-o-heart class="text-green-400"/>
+                                                    @endif
+                                                </button>
 
                                                 <button
                                                     @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteSingle', itemId: {{$item->id}} })"
