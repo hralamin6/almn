@@ -16,6 +16,7 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 |
 */
 Route::get('/arabic-words', \App\Livewire\ArabicWordComponent::class)->name('home');
+Route::get('/arabic-words/exam', \App\Livewire\ExamComponent::class)->name('exam');
 
 Route::middleware('admin')->group(function () {
     Route::get('/dashboard', \App\Livewire\HomeComponent::class)->name('dashboard.home');

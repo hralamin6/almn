@@ -57,10 +57,7 @@
                            class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-darker dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
                     <x-select id="searchBy" wire:model.live="searchBy" class="dark:bg-darker capitalize">
                         <option value="name">@lang('name')</option>
-                        <option value="email">@lang('email')</option>
-                        <option value="address">@lang('address')</option>
-                        <option value="phone">@lang('phone')</option>
-                        <option value="bio">@lang('bio')</option>
+                        <option value="meaning">@lang('meaning')</option>
                     </x-select>
                 </div>
             </div>

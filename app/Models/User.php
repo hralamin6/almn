@@ -42,6 +42,6 @@ class User extends Authenticatable
 
     public function words()
     {
-        return $this->belongsToMany(Word::class, 'word_users', 'user_id', 'word_id');
+        return $this->belongsToMany(Word::class, 'word_users', 'user_id', 'word_id')->withTimestamps();
     }
 }
