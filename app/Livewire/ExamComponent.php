@@ -12,7 +12,7 @@ class ExamComponent extends Component
 {
     use LivewireAlert;
 public $ans=[];
-    public $item_per_page = 10, $time_per_question = 30, $same_items, $practise, $options, $items, $submitted=false, $true_ans, $range, $is_single_page=1, $is_mcq=1, $date_time, $q_start=1, $q_end=25, $is_minus=0;
+    public $item_per_page = 10, $time_per_question = 30, $same_items, $practise, $options, $items, $submitted=false, $true_ans, $range, $is_single_page=1, $is_mcq=1, $date_time, $q_start=1, $q_end=1000, $is_minus=0;
     protected $queryString = [
         'practise'
     ];
