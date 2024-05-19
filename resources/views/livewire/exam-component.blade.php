@@ -159,7 +159,7 @@
                         })
                 },
                 openTable: $persist('ot'),
-                ans : @entangle('ans').live,
+                ans : @entangle('ans'),
                 time : {{$item_per_page*$time_per_question}},
                 itemPerPage : {{$item_per_page}},
                 step : 1,
