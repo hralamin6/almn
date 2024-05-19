@@ -90,32 +90,44 @@
                                                 </button>
 
                                                 <!-- Dropdown menu -->
+                                                @auth
+                                                @can('isAdmin')
                                                 <div x-show="bulk"
                                                      class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
                                                      @click.outside="bulk= false">
                                                     <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
                                                        class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                         Delete </a>
+
+                                                        <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'wishListMultiple', itemId: '' })"
+                                                           class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                                                            @lang('wishlist') </a>
                                                     {{--                                                    <a wire:click.prevent="" class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Your projects </a>--}}
                                                 </div>
+                                                @endcan
+                                                @endauth
                                             </div>
                                         </div>
                                     </th>
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
-                                             :field="'name'">@lang('name')</x-field>
+                                             :field="'name'">@lang('word')</x-field>
+                                    @can('isAdmin')
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'status'">@lang('status')</x-field>
+                                    @endcan
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'meaning'">@lang('meaning')</x-field>
-                                    <x-field :OB="$orderBy" :OD="$orderDirection"
-                                             :field="'male_name'">@lang('male_name')</x-field>
-                                    <x-field :OB="$orderBy" :OD="$orderDirection"
-                                             :field="'female_name'">@lang('female_name')</x-field>
+{{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
+{{--                                             :field="'male_name'">@lang('male_name')</x-field>--}}
+{{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
+{{--                                             :field="'female_name'">@lang('female_name')</x-field>--}}
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'gender'">@lang('gender')</x-field>
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'pop'">@lang('pop')</x-field>
-                                    <x-field>@lang('action')</x-field>
+                                    @auth
+                                        <x-field>@lang('action')</x-field>
+                                    @endauth
 
 
                                 </tr>
@@ -131,15 +143,13 @@
                                         <td class="px-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                             <div class="inline-flex items-center gap-x-3">
                                                 <div class="flex items-center gap-x-2">
-                                                    <img class="object-cover w-10 h-10 rounded-full"
-                                                         src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                                         alt="">
                                                     <div>
                                                         <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->name }}</h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
+                                        @can('isAdmin')
                                         <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">
                                             <div
                                                 class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
@@ -148,26 +158,20 @@
                                                 <button type="button" wire:click="changeStatus({{ $item->id }})" class="cursor-pointer text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</button>
                                             </div>
                                         </td>
+                                        @endcan
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->meaning }}</td>
-                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->male_name }}</td>
-                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->female_name }}</td>
+{{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->male_name }}</td>--}}
+{{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->female_name }}</td>--}}
                                         <td class="text-sm font-normal {{ $item->gender=='male'?'text-emerald-500':($item->gender=='female'?'text-pink-500':'text-green-500')}} ">{{ $item->gender }}</td>
                                         <td class="text-sm font-normal {{ $item->pop=='noun'?'text-emerald-500':($item->pop=='adjective'?'text-pink-500':'text-green-500')}} ">{{ $item->pop }}</td>
-
+                                        @auth()
                                         <td class="px-4 text-sm whitespace-nowrap">
                                             <div class="flex items-center gap-x-6">
+                                                @can('isAdmin')
                                                 <button @click="editModal('{{$item->id}}')"
                                                         class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                                     <x-h-o-pencil-square class="text-green-400"/>
-                                                </button>
-                                                <button wire:click="addToWishlist('{{$item->id}}')"
-                                                        class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
-                                                    @if(auth()->user()->words()->where('word_id',$item->id)->first())
-                                                        <x-h-s-heart class="text-red-400"/>
-                                                    @else
-                                                        <x-h-o-heart class="text-green-400"/>
-                                                    @endif
                                                 </button>
 
                                                 <button
@@ -175,8 +179,18 @@
                                                     class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
                                                     <x-h-o-trash class="text-red-400"/>
                                                 </button>
+                                                @endcan
+                                                    <button wire:click="addToWishlist('{{$item->id}}')"
+                                                            class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                                                        @if(auth()->user()->words()->where('word_id',$item->id)->first())
+                                                            <x-h-s-heart class="text-red-400"/>
+                                                        @else
+                                                            <x-h-o-heart class="text-green-400"/>
+                                                        @endif
+                                                    </button>
                                             </div>
                                         </td>
+                                        @endauth
                                     </tr>
                                 @empty
 

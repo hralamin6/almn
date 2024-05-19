@@ -59,7 +59,13 @@ class ArabicWordComponent extends Component
     }
     public function addToWishlist(Word $word)
     {
-        auth()->user()->words()->toggle([$word->id, ['status' => 1]]);
+        if (auth()->user()->words()->where('word_id',$word->id)->first()){
+
+            auth()->user()->words()->detach($word->id, ['status' => 1]);
+        }else{
+            auth()->user()->words()->attach($word->id, ['status' => 1]);
+
+        }
         $this->alert('success', __('Data updated successfully'));
     }
     public function resetData()
