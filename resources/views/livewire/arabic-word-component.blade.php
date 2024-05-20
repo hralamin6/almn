@@ -11,7 +11,7 @@
             </div>
 
             <div class="flex items-center mt-4 gap-x-3">
-                <button wire:click="generate_pdf"
+                <button wire:click.prevent="generate_pdf"
                         class="capitalize flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-darker hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
                     <x-h-o-arrow-down-tray/>
                     <span>@lang('export pdf')</span>

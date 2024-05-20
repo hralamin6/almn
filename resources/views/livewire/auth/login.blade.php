@@ -54,13 +54,20 @@
             <!-- Or -->
             <div class="flex items-center justify-center space-x-2 flex-nowrap">
                 <span class="w-20 h-px bg-gray-300"></span>
-                <button type="button" @click="$wire.email='hralamin2020@gmail.com'; $wire.password= '000000' ;$wire.authenticate()">OR</button>
+                <button type="button"
+{{--                        @click="$wire.email='hralamin2020@gmail.com'; $wire.password= '000000' ;$wire.authenticate()"--}}
+                >OR</button>
                 <span class="w-20 h-px bg-gray-300"></span>
             </div>
 
             <!-- Social login links -->
             <!-- Brand icons src https://boxicons.com -->
             <a href="{{ route('socialite.auth', 'google') }}" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
+            >
+                <i class='bx bxl-google bx-tada text-2xl text-white' ></i>
+                <span> Login with google </span>
+            </a>
+            <a href="{{ route('socialite.auth', 'github') }}" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
             >
                 <svg
                     aria-hidden="true"
