@@ -2,19 +2,24 @@
 
 namespace App\Livewire;
 
+use App\Exports\WordExport;
+use App\Imports\WordImport;
 use App\Models\Setup;
 use App\Models\Word;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 use misterspelik\LaravelPdf\Facades\Pdf;
 
 class ArabicWordComponent extends Component
 {
 
+    use WithFileUploads;
     use WithPagination;
     use LivewireAlert;
     public $selectedRows = [];
@@ -26,6 +31,7 @@ class ArabicWordComponent extends Component
     public $orderDirection = 'asc';
     public $search = '';
     public $itemStatus;
+    public $photo;
     protected $queryString = [
         'search' => ['except' => ''],
         'itemStatus' => ['except' => null],
@@ -37,6 +43,17 @@ class ArabicWordComponent extends Component
     public function updatedSearch()
     {
         $this->resetPage();
+    }
+    public function import(){
+        $this->validate([
+            'photo' => 'required|mimes:xls,csv, xlsx|max:1024', // 1MB Max
+        ]);
+        Excel::import(new WordImport(), $this->photo->store('photos'));
+        $this->alert('success', 'Successfully imported');
+    }
+    public function export()
+    {
+        return Excel::download(new WordExport(), 'words.xls', \Maatwebsite\Excel\Excel::XLS);
     }
     public function updatedItemPerPage()
     {
@@ -62,11 +79,14 @@ class ArabicWordComponent extends Component
         if (auth()->user()->words()->where('word_id',$word->id)->first()){
 
             auth()->user()->words()->detach($word->id, ['status' => 1]);
+            $this->alert('success', __('Discard from wishlist successfully'));
+
         }else{
             auth()->user()->words()->attach($word->id, ['status' => 1]);
+            $this->alert('success', __('Added to wishlist successfully'));
+
 
         }
-        $this->alert('success', __('Data updated successfully'));
     }
     public function resetData()
     {
@@ -138,9 +158,22 @@ class ArabicWordComponent extends Component
         return response()->streamDownload(function () {
             $items= $this->data;
             $setup = Setup::first();
-            $pdf = Pdf::loadView('pdf.words', compact('items', 'setup'));
+            $pdf = Pdf::loadView('excel.words', compact('items', 'setup'));
             return $pdf->stream('words.pdf');
         }, 'words.pdf');
+    }
+    public function wishListMultiple()
+    {
+        $relatedData = [];
+
+// Loop through logic to populate the array
+        foreach ($this->selectedRows as $i=> $r) {
+            $relatedData[$r] = [
+                'status' => 1,
+            ];
+        }
+        auth()->user()->words()->syncWithoutDetaching($relatedData);
+        $this->alert('success', __('Added to wishlist successfully'));
     }
     public function deleteMultiple()
     {

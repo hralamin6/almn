@@ -15,7 +15,9 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/arabic-words', \App\Livewire\ArabicWordComponent::class)->name('home');
+Route::get('/', \App\Livewire\HomeComponent::class)->name('home');
+Route::get('/arabic-words', \App\Livewire\ArabicWordComponent::class)->name('words');
+Route::get('/arabic-words/practise', \App\Livewire\PractiseComponent::class)->name('practise');
 Route::get('/arabic-words/exam', \App\Livewire\ExamComponent::class)->name('exam');
 
 Route::middleware('admin')->group(function () {
@@ -29,7 +31,7 @@ Route::middleware('admin')->group(function () {
 Route::get('dashboard/login', \App\Livewire\Auth\Adminlogin::class)->name('dashboard.login');
 Route::middleware('guest')->group(function () {
     Route::get('login', \App\Livewire\Auth\Login::class)->name('login');
-    Route::get('register', \App\Livewire\Auth\Register::class)->name('register');
+//    Route::get('register', \App\Livewire\Auth\Register::class)->name('register');
     Route::get('auth/{provider}/redirect', [\App\Http\Controllers\SocialiteController::class, 'loginSocial'])->name('socialite.auth');
     Route::get('auth/{provider}/callback', [\App\Http\Controllers\SocialiteController::class, 'callbackSocial'])->name('socialite.callback');
 

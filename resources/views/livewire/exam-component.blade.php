@@ -1,4 +1,4 @@
-<div class=" rounded-xl mt-4" x-data="user()">
+<div class="h-full p-4" x-data="user()">
     @if(!$submitted)
         <div class="mx-auto text-center">
             <span class="countdown font-mono text-2xl">
@@ -61,7 +61,7 @@
             <div class="grid grid-cols-3 justify-between gap-2 my-6">
                 @if($is_single_page)
                     <button class="btn btn-outline btn-primary col-start-2" wire:loading.class.add="loading"
-                            @click="$wire.set('ans', ans), $wire.submit(), step=0">submit
+                            @click="time=1">submit
                     </button>
                 @else
                     <button x-cloak x-show="step>1" @click="step>1?step--:''" type="button"

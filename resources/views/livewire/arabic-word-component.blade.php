@@ -11,16 +11,51 @@
             </div>
 
             <div class="flex items-center mt-4 gap-x-3">
+                @auth
+                    @can('isAdmin')
+                        <div>
+                            <form wire:submit="import">
+                                @csrf
+                                <div
+                                    x-data="{ isUploading: false, progress: 0 }"
+                                    x-on:livewire-upload-start="isUploading = true"
+                                    x-on:livewire-upload-finish="isUploading = false, $wire.import()"
+                                    x-on:livewire-upload-error="isUploading = false"
+                                    x-on:livewire-upload-progress="progress = $event.detail.progress"
+                                >
+                                    <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg px-1 mx-auto text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-darker dark:border-gray-700 rounded-xl">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500 dark:text-gray-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                                        </svg>
+                                        <input id="dropzone-file" type="file" class="hidden" wire:model="photo" />
+                                    </label>
+                                    @error('photo') <span class="text-red-500">{{ $message }}</span> @enderror
+                            </form>
+{{--                            <button type="submit" class="btn btn-primary">Import Users</button>--}}
+                            <div wire:loading wire:target="photo, import">...</div>
+                            <div x-show="isUploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
+                        </div>
+            </div>
+
+                    @endcan
+                @endauth
                 <button wire:click.prevent="generate_pdf"
                         class="capitalize flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-darker hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
                     <x-h-o-arrow-down-tray/>
-                    <span>@lang('export pdf')</span>
+                    <span>@lang('pdf')</span>
+                </button>
+                <button wire:click.prevent="export"
+                        class="capitalize flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-darker hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700">
+                    <x-h-o-arrow-down-tray/>
+                    <span>@lang('excel')</span>
                 </button>
 
                 <button x-cloak @click="toggleModal"
                         class="capitalize flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600">
                     <x-h-o-plus-circle/>
-                    <span>@lang('add new')</span>
+                    <span>@lang('add')</span>
                 </button>
             </div>
         </div>
@@ -99,13 +134,14 @@
                                                        class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                         Delete </a>
 
-                                                        <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'wishListMultiple', itemId: '' })"
+                                                        <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
                                                            class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                             @lang('wishlist') </a>
                                                     {{--                                                    <a wire:click.prevent="" class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Your projects </a>--}}
                                                 </div>
                                                 @endcan
                                                 @endauth
+
                                             </div>
                                         </div>
                                     </th>
@@ -125,9 +161,7 @@
                                              :field="'gender'">@lang('gender')</x-field>
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'pop'">@lang('pop')</x-field>
-                                    @auth
                                         <x-field>@lang('action')</x-field>
-                                    @endauth
 
 
                                 </tr>
@@ -165,8 +199,8 @@
 {{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->female_name }}</td>--}}
                                         <td class="text-sm font-normal {{ $item->gender=='male'?'text-emerald-500':($item->gender=='female'?'text-pink-500':'text-green-500')}} ">{{ $item->gender }}</td>
                                         <td class="text-sm font-normal {{ $item->pop=='noun'?'text-emerald-500':($item->pop=='adjective'?'text-pink-500':'text-green-500')}} ">{{ $item->pop }}</td>
-                                        @auth()
                                         <td class="px-4 text-sm whitespace-nowrap">
+                                            @auth()
                                             <div class="flex items-center gap-x-6">
                                                 @can('isAdmin')
                                                 <button @click="editModal('{{$item->id}}')"
@@ -188,9 +222,17 @@
                                                             <x-h-o-heart class="text-green-400"/>
                                                         @endif
                                                     </button>
+
                                             </div>
+                                            @endauth
+                                        @guest
+                                            <a href="{{ route('socialite.auth', 'google') }}"
+                                                   class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                                                    <x-h-o-heart class="text-green-400"/>
+                                                </a>
+                                            @endguest
                                         </td>
-                                        @endauth
+
                                     </tr>
                                 @empty
 
@@ -239,6 +281,14 @@
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="meaning">@lang('meaning')</label>
                             <x-input errorName="meaning" wire:model="meaning" type="text"/>
+                        </div>
+                        <div>
+                            <label for="male">Male</label>
+                            <input type="radio" wire:model="gender" value="male" id="male">
+
+                            <label for="female">Female</label>
+                            <input type="radio" wire:model="gender" value="female" id="female">
+
                         </div>
 
                         <div>

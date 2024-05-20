@@ -15,6 +15,7 @@
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
+        "maatwebsite/excel": "^3.1",
         "misterspelik/laravel-pdf": "^1.1",
         "silviolleite/laravelpwa": "^2.0",
         "tanmuhittin/laravel-google-translate": "^2.3"

@@ -89,11 +89,11 @@
 
             <!-- Register link -->
 
-            @if (Route::has('register'))
-                <div class="text-sm text-gray-600 dark:text-gray-400">
-                    Don't have an account yet? <a href="{{route('register')}}" wire:navigate class="text-blue-600 hover:underline">Register</a>
-                </div>
-            @endif
+{{--            @if (Route::has('register'))--}}
+{{--                <div class="text-sm text-gray-600 dark:text-gray-400">--}}
+{{--                    Don't have an account yet? <a href="{{route('register')}}" wire:navigate class="text-blue-600 hover:underline">Register</a>--}}
+{{--                </div>--}}
+{{--            @endif--}}
         </div>
     </main>
 </div>

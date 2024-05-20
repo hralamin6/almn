@@ -14,9 +14,21 @@
                         }
                     @endphp
 
-                    <a href="{{route('dashboard.home')}}" wire:navigate class="{{Route::is('home')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                    <a href="{{route('home')}}" wire:navigate class="{{Route::is('home')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
                         <span aria-hidden="true"><i class='bx bx-home-alt bx-tada' ></i></span>
                         <span class="ml-2 "> @lang('home') </span>
+                    </a>
+                    <a href="{{route('words')}}" wire:navigate class="{{Route::is('words')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                        <span aria-hidden="true"><i class='bx bxl-wordpress bx-flashing' ></i></span>
+                        <span class="ml-2 "> @lang('words') </span>
+                    </a>
+                    <a href="{{route('practise')}}" wire:navigate class="{{Route::is('practise')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                        <span aria-hidden="true"><i class='bx bxl-meta bx-burst' ></i></span>
+                        <span class="ml-2 "> @lang('practise') </span>
+                    </a>
+                    <a href="{{route('exam')}}" wire:navigate class="{{Route::is('exam')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                        <span aria-hidden="true"><i class='bx bxl-kubernetes bx-burst' ></i></span>
+                        <span class="ml-2 "> @lang('exam') </span>
                     </a>
                     @auth('admin')
 {{--                        @can('isAdmin')--}}
@@ -94,10 +106,10 @@
                             <span aria-hidden="true"><i class='bx bx-log-in-circle bx-tada' ></i></span>
                             <span class="ml-2 "> @lang('login') </span>
                         </a>
-                        <a href="{{route('register')}}" wire:navigate class="{{Route::is('register')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
-                            <span aria-hidden="true"><i class='bx bx-user-plus bx-tada' ></i></span>
-                            <span class="ml-2 "> @lang('register') </span>
-                        </a>
+{{--                        <a href="{{route('register')}}" wire:navigate class="{{Route::is('register')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">--}}
+{{--                            <span aria-hidden="true"><i class='bx bx-user-plus bx-tada' ></i></span>--}}
+{{--                            <span class="ml-2 "> @lang('register') </span>--}}
+{{--                        </a>--}}
                     @endguest
 
                 </nav>

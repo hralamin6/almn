@@ -55,7 +55,7 @@ class SocialiteController extends Controller
             return redirect()->intended(RouteServiceProvider::DashboardHome);
         }else{
             Auth::login($user, remember: true);
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(RouteServiceProvider::ArabicWords);
         }
     }
 
