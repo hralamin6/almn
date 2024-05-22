@@ -21,7 +21,7 @@
 
         <!-- Brand -->
         <a
-            href="index.html"
+            href="{{route('home')}}" wire:navigate
             class="inline-block text-2xl font-bold tracking-wider uppercase bg-gradient-to-r from-red-500 to-green-500 px-2 py-1 rounded-lg text-light"
         >
             ARA-VOC
