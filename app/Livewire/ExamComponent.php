@@ -75,7 +75,7 @@ public $ans=[];
 
                 $que = new Question();
                 $que->quiz_id= $quizz->id;
-                $que->title= 'what is the '. $this->practise .' of '. $question[$this->from];
+                $que->title=  $question[$this->from];
                 $que->answer =  $question[$this->practise];
                 $que->user_answer = null;
                 $que->status = 'skipped';

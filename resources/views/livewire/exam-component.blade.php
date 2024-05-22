@@ -92,8 +92,8 @@
             @foreach($items as $i => $item)
                 <div @if(!$is_single_page) x-cloak x-show="step=={{$i+1}}"
                      @endif class=" @if(!$is_mcq) md:flex md:gap-2 justify-between @endif border border-2 rounded-lg border-purple-400 p-3 my-2">
-                    <legend class="text-lg font-medium my-1 text-gray-700 dark:text-gray-200" style="font-family: examplefont"><span>({{$i+1}})</span> What is the {{$practise}} of <span
-                            class="">{{$item[$from]}}?</span></legend>
+                    <legend class="text-lg font-medium my-1 text-gray-700 dark:text-gray-200" style="font-family: examplefont"><span>({{$i+1}})</span>
+                        <span class="">{{$item[$from]}}?</span></legend>
                     @if(!$is_mcq)
                         <input type="text" placeholder="" x-model="ans[{{$i}}]"
                                class="dark:bg-darker bg-gray-300 rounded-full px-2 py-1"/>
@@ -166,8 +166,8 @@
                 @endphp
                 <div
                     class="border border-2 rounded-lg border-purple-400 p-3 my-2 {{$is_true?'bg-green-100 dark:bg-green-300':'bg-red-100 dark:bg-red-300'}} ">
-                    <legend class="text-lg font-medium my-1 text-gray-800"><span>({{$i+1}})</span> What is the {{$practise}} of <span
-                            class=""> {{$item[$from]}}?</span></legend>
+                    <legend class="text-lg font-medium my-1 text-gray-800"><span>({{$i+1}})</span>
+                        <span class=""> {{$item[$from]}}?</span></legend>
                     <ul class="grid grid-cols-2 gap-4">
                         <li>
                             <label class="flex items-center text-sm">

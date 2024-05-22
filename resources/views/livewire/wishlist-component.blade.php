@@ -5,13 +5,13 @@
 
                 <div class="flex items-center justify-between space-x-2 capitalize">
                     <div class=" md:mt-0 w-24 md:w-48">
-                        <x-input wire:model.blur="itemPerPage" type="number" class="appearance-hidden dark:bg-darker"/>
+                        <x-input wire:model.live="itemPerPage" type="number" class="appearance-hidden dark:bg-darker"/>
                     </div>
                     <div class="relative flex items-center  md:mt-0">
             <span class="absolute">
                 <x-h-o-magnifying-glass class="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600"/>
             </span>
-                        <input wire:model.blur="search" type="text" placeholder="Search"
+                        <input wire:model.live="search" type="text" placeholder="Search"
                                class="w-48 block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-darker dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
                         <x-select id="searchBy" wire:model.live="searchBy" class="w-48 dark:bg-darker capitalize">
                             <option value="name">@lang('name')</option>
