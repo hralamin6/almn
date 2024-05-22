@@ -94,13 +94,13 @@
                 <div <?php if(!$is_single_page): ?> x-cloak x-show="step==<?php echo e($i+1); ?>"
                      <?php endif; ?> class=" <?php if(!$is_mcq): ?> md:flex md:gap-2 justify-between <?php endif; ?> border border-2 rounded-lg border-purple-400 p-3 my-2">
                     <legend class="text-lg font-medium my-1 text-gray-700 dark:text-gray-200" style="font-family: examplefont"><span>(<?php echo e($i+1); ?>)</span> What is the <?php echo e($practise); ?> of <span
-                            class=""><?php echo e($item->meaning); ?>?</span></legend>
+                            class=""><?php echo e($item[$from]); ?>?</span></legend>
                     <!--[if BLOCK]><![endif]--><?php if(!$is_mcq): ?>
                         <input type="text" placeholder="" x-model="ans[<?php echo e($i); ?>]"
-                               class="input input-bordered input-info focus:shadow-none focus:outline-none input-sm max-w-xs">
+                               class="dark:bg-darker bg-gray-300 rounded-full px-2 py-1"/>
                     <?php else: ?>
                         <ul class="grid grid-cols-2 gap-4">
-                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $item->options($item, $practise); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j => $option): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $item->options($item, $practise, $from); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j => $option): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li>
                                     <label class="flex items-center text-sm">
                                         <input x-model="ans[<?php echo e($i); ?>]" value="<?php echo e($option[$practise]); ?>" type="radio"
@@ -168,7 +168,7 @@
                 <div
                     class="border border-2 rounded-lg border-purple-400 p-3 my-2 <?php echo e($is_true?'bg-green-100 dark:bg-green-300':'bg-red-100 dark:bg-red-300'); ?> ">
                     <legend class="text-lg font-medium my-1 text-gray-800"><span>(<?php echo e($i+1); ?>)</span> What is the <?php echo e($practise); ?> of <span
-                            class=""> <?php echo e($item->meaning); ?>?</span></legend>
+                            class=""> <?php echo e($item[$from]); ?>?</span></legend>
                     <ul class="grid grid-cols-2 gap-4">
                         <li>
                             <label class="flex items-center text-sm">

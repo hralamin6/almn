@@ -702,40 +702,15 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                         </div>
 
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="type"><?php echo app('translator')->get('gender'); ?></label>
-                            <?php if (isset($component)) { $__componentOriginaled2cde6083938c436304f332ba96bb7c = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginaled2cde6083938c436304f332ba96bb7c = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.select','data' => ['id' => 'gender','wire:model' => 'gender']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('select'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['id' => 'gender','wire:model' => 'gender']); ?>
-                                <option value=""><?php echo app('translator')->get('select gender'); ?></option>
-                                <option value="male"><?php echo app('translator')->get('male'); ?></option>
-                                <option value="female"><?php echo app('translator')->get('female'); ?></option>
-                             <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginaled2cde6083938c436304f332ba96bb7c)): ?>
-<?php $attributes = $__attributesOriginaled2cde6083938c436304f332ba96bb7c; ?>
-<?php unset($__attributesOriginaled2cde6083938c436304f332ba96bb7c); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginaled2cde6083938c436304f332ba96bb7c)): ?>
-<?php $component = $__componentOriginaled2cde6083938c436304f332ba96bb7c; ?>
-<?php unset($__componentOriginaled2cde6083938c436304f332ba96bb7c); ?>
-<?php endif; ?>
-                            <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['gender'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?><p class="text-sm text-red-500 font-medium"><?php echo e($message); ?></p><?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
-                        </div>
+
+
+
+
+
+
+
+
+
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="type"><?php echo app('translator')->get('pop'); ?></label>
                             <?php if (isset($component)) { $__componentOriginaled2cde6083938c436304f332ba96bb7c = $component; } ?>
@@ -750,6 +725,8 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component->withAttributes(['id' => 'pop','wire:model' => 'pop']); ?>
                                 <option value=""><?php echo app('translator')->get('select pop'); ?></option>
                                 <option value="noun"><?php echo app('translator')->get('noun'); ?></option>
+                                <option value="pronoun"><?php echo app('translator')->get('pronoun'); ?></option>
+                                <option value="adverb"><?php echo app('translator')->get('adverb'); ?></option>
                                 <option value="adjective"><?php echo app('translator')->get('adjective'); ?></option>
                                 <option value="verb"><?php echo app('translator')->get('verb'); ?></option>
                              <?php echo $__env->renderComponent(); ?>

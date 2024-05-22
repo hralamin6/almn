@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 @endcan
-                <div class="flex justify-between items-center mb-2">
+                <div class="flex justify-between items-center capitalize mb-2">
                     <h2 class="text-xl font-bold">{{$item->title}}</h2>
                     <button
                         @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'You will loss this data forever', icon: 'error',actionName: 'deleteSingle', itemId: {{$item->id}} })"
@@ -100,7 +100,7 @@
                 </div>
             </div>
             @endcan
-            <div class="flex justify-between items-center mb-2">
+            <div class="flex justify-between items-center capitalize mb-2">
                 <h2 class="text-xl font-bold">{{$quiz->title}}</h2>
                 <button
                     @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'You will loss this data forever', icon: 'error',actionName: 'deleteSingle', itemId: {{$quiz->id}} })"

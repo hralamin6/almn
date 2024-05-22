@@ -194,18 +194,20 @@
             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
             
 
-            <a href="<?php echo e(route('exam')); ?>?practise=name" wire:navigate class="bg-gradient-to-r from-red-500 to-green-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+            <a href="<?php echo e(route('exam')); ?>?practise=meaning&from=name" wire:navigate class="m-1 bg-gradient-to-r from-red-500 to-green-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span><?php echo app('translator')->get('word to meaning'); ?></span>
+            </a>
+            <a href="<?php echo e(route('exam')); ?>?practise=name&from=meaning" wire:navigate class="m-1 bg-gradient-to-r from-green-500 to-red-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
                 <span><?php echo app('translator')->get('meaning to word'); ?></span>
+            </a>
+            <a href="<?php echo e(route('exam')); ?>?practise=pop&from=meaning" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span><?php echo app('translator')->get('meaning to parts of speech'); ?></span>
+            </a>
+            <a href="<?php echo e(route('exam')); ?>?practise=meaning&from=pop" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span><?php echo app('translator')->get('parts of speech to meaning'); ?></span>
             </a>
         </div>
 
-        
-        
-        
-        
-        
-        
-        
     </div>
 
 </div>

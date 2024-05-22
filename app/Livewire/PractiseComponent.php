@@ -8,7 +8,7 @@ use Livewire\Component;
 class PractiseComponent extends Component
 {
     use LivewireAlert;
-    public $is_single_page=0,$is_mcq=1, $q_number=10, $q_time=30, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
+    public $is_single_page=1,$is_mcq=1, $q_number=10, $q_time=30, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
 
     public function mount()
     {

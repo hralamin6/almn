@@ -308,20 +308,22 @@
 
                         </div>
 
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="type">@lang('gender')</label>
-                            <x-select id="gender" wire:model="gender">
-                                <option value="">@lang('select gender')</option>
-                                <option value="male">@lang('male')</option>
-                                <option value="female">@lang('female')</option>
-                            </x-select>
-                            @error('gender')<p class="text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
-                        </div>
+{{--                        <div>--}}
+{{--                            <label class="text-gray-700 dark:text-gray-200" for="type">@lang('gender')</label>--}}
+{{--                            <x-select id="gender" wire:model="gender">--}}
+{{--                                <option value="">@lang('select gender')</option>--}}
+{{--                                <option value="male">@lang('male')</option>--}}
+{{--                                <option value="female">@lang('female')</option>--}}
+{{--                            </x-select>--}}
+{{--                            @error('gender')<p class="text-sm text-red-500 font-medium">{{ $message }}</p>@enderror--}}
+{{--                        </div>--}}
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="type">@lang('pop')</label>
                             <x-select id="pop" wire:model="pop">
                                 <option value="">@lang('select pop')</option>
                                 <option value="noun">@lang('noun')</option>
+                                <option value="pronoun">@lang('pronoun')</option>
+                                <option value="adverb">@lang('adverb')</option>
                                 <option value="adjective">@lang('adjective')</option>
                                 <option value="verb">@lang('verb')</option>
                             </x-select>

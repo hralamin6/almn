@@ -104,18 +104,20 @@
             @endauth
             {{--        <button class="btn btn-outline btn-primary btn-sm text-sm" wire:target="startPractise" wire:click.prevent="startPractise" wire:loading.class.add="loading">Save</button>--}}
 
-            <a href="{{route('exam')}}?practise=name" wire:navigate class="bg-gradient-to-r from-red-500 to-green-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+            <a href="{{route('exam')}}?practise=meaning&from=name" wire:navigate class="m-1 bg-gradient-to-r from-red-500 to-green-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span>@lang('word to meaning')</span>
+            </a>
+            <a href="{{route('exam')}}?practise=name&from=meaning" wire:navigate class="m-1 bg-gradient-to-r from-green-500 to-red-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
                 <span>@lang('meaning to word')</span>
+            </a>
+            <a href="{{route('exam')}}?practise=pop&from=meaning" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span>@lang('meaning to parts of speech')</span>
+            </a>
+            <a href="{{route('exam')}}?practise=meaning&from=pop" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span>@lang('parts of speech to meaning')</span>
             </a>
         </div>
 
-        {{--    <div class="grid grid-cols-2 justify-between md:grid-cols-2 gap-6">--}}
-        {{--        @foreach(\Illuminate\Support\Facades\Schema::getColumnListing('words') as $i=> $col)--}}
-        {{--            @if($col!='summary' && $col!='discovered_by' && $col!='source' && $col!='created_at' && $col!='updated_at' && $col!='id')--}}
-        {{--                <a class="btn btn-outline btn-primary btn-sm capitalize dark:text-pink-400" href="{{route('exam')}}?practise={{$col}}">@lang('meaning to') {{$col}}</a>--}}
-        {{--            @endif--}}
-        {{--        @endforeach--}}
-        {{--    </div>--}}
     </div>
 
 </div>

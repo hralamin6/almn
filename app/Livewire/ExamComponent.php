@@ -14,10 +14,10 @@ class ExamComponent extends Component
 {
     use LivewireAlert;
 public $ans=[];
-    public $item_per_page = 10, $time_per_question = 30, $same_items, $practise, $options, $items, $submitted=false,
+    public $item_per_page = 10, $time_per_question = 30, $same_items, $practise,$from, $options, $items, $submitted=false,
        $correct=0, $wrong=0, $skipped=0, $negative = 0, $true_ans, $range, $is_single_page=1, $is_mcq=1, $date_time, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
     protected $queryString = [
-        'practise'
+        'practise', 'from'
     ];
     public function getDataProperty()
     {
@@ -33,12 +33,13 @@ public $ans=[];
     public function mount(Request $request)
     {
         $columns = Schema::getColumnListing('words');
-        if ($request->practise && in_array($this->practise, $columns)){
+        if ($request->practise && in_array($this->practise, $columns) && in_array($this->from, $columns)){
             $this->practise = $request->practise;
+            $this->from = $request->from;
         }else{
             $this->practise = 'name';
+            $this->from = 'meaning';
         }
-//        dd($this->practise);
         if (session()->has('q_number')){
 
                 $this->item_per_page = session()->get('q_number');
@@ -66,7 +67,7 @@ public $ans=[];
             $wrong = 0;
             $quizz = new Quiz();
             $quizz->user_id = auth()->id();
-            $quizz->title = 'meaning to word';
+            $quizz->title = $this->from .' to '. $this->practise ;
             $quizz->count = $this->item_per_page;
             $quizz->is_minus = $this->is_minus;
             $quizz->save();
@@ -74,7 +75,7 @@ public $ans=[];
 
                 $que = new Question();
                 $que->quiz_id= $quizz->id;
-                $que->title= 'what is the arabic form of '. $question['meaning'];
+                $que->title= 'what is the '. $this->practise .' of '. $question[$this->from];
                 $que->answer =  $question[$this->practise];
                 $que->user_answer = null;
                 $que->status = 'skipped';
@@ -128,14 +129,14 @@ public $ans=[];
             $quizz->result = $this->true_ans;
             $quizz->correct = $correct;
             $quizz->wrong = $wrong;
-            $quizz->is_minus = $this->is_minus?$this->wrong:0;
+            $quizz->is_minus = $this->is_minus==1?$wrong:0;
             $quizz->skipped = $this->item_per_page-($correct+$wrong);
             $quizz->save();
 
             $this->correct = $correct;
             $this->wrong = $wrong;
             $this->skipped = $this->item_per_page-($correct+$wrong);;
-            $this->negative = $this->is_minus?$this->wrong:0;
+            $this->negative = $this->is_minus?$wrong:0;
         }else{
             $this->true_ans = 0;
             $correct = 0;
@@ -176,7 +177,7 @@ public $ans=[];
             $this->correct = $correct;
             $this->wrong = $wrong;
             $this->skipped = $this->item_per_page-($correct+$wrong);;
-            $this->negative = $this->is_minus?$this->wrong:0;
+            $this->negative = $this->is_minus==1?$this->wrong:0;
 
         }
 

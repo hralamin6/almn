@@ -9,17 +9,59 @@ class Word extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function options(Word $word, $field)
+    public function options(Word $word, $practise, $from)
     {
-        if ($field==='name'){
-            $name = mb_substr($word->name, 0, 1);
-            $meaning = mb_substr($word->meaning, 0, 1);
-            $words = Word::where('id', '!=', $word->id)->where($field, 'like', $name.'%')->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)->get());
-            if ($words->count() < 4) {
-                $additionalData = Word::where('id', '!=', $word->id)->where('meaning', 'like', $meaning.'%')->take(4 - $words->count())->get();
-                $words = $words->merge($additionalData);
+        if ($from==='meaning'){
+            if ($practise==='name'){
+                $name = mb_substr($word->name, 0, 1);
+                $meaning = mb_substr($word->meaning, 0, 1);
+                $words = Word::where('id', '!=', $word->id)->where($practise, 'like', $name.'%')->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)->get());
+                if ($words->count() < 4) {
+                    $additionalData = Word::where('id', '!=', $word->id)->where($from, 'like', $meaning.'%')->take(4 - $words->count())->get();
+                    $words = $words->merge($additionalData);
+                }
+            }elseif ($practise==='pop'){
+                $additionalData = Word::where('id', $word->id)->get();
+                $model = Word::select($practise)->distinct()->where('id', '!=', $word->id)->where($practise, '!=', $word->pop)->inRandomOrder()->limit(3)->get();
+                $words = array_merge($model->toArray(), $additionalData->toArray());
+                $words = collect($words);
             }
         }
+
+
+
+        if ($from==='pop'){
+            if ($practise==='name'){
+                $name = mb_substr($word->name, 0, 1);
+                $meaning = mb_substr($word->meaning, 0, 1);
+                $words = Word::where('id', '!=', $word->id)->where($practise, 'like', $name.'%')->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)->get());
+                if ($words->count() < 4) {
+                    $additionalData = Word::where('id', '!=', $word->id)->where($from, 'like', $meaning.'%')->take(4 - $words->count())->get();
+                    $words = $words->merge($additionalData);
+                }
+            }elseif ($practise==='meaning'){
+                $additionalData = Word::where('id', $word->id)->get();
+                $model = Word::where('id', '!=', $word->id)->where($from, '!=', $word->pop)->inRandomOrder()->limit(3)->get();
+                $words = array_merge($model->toArray(), $additionalData->toArray());
+                $words = collect($words);
+            }
+        }
+
+
+
+
+        elseif ($from==='name'){
+            if ($practise==='meaning'){
+                $name = mb_substr($word->name, 0, 1);
+                $meaning = mb_substr($word->meaning, 0, 1);
+                $words = Word::where('id', '!=', $word->id)->where($practise, 'like', $meaning.'%')->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)->get());
+                if ($words->count() < 4) {
+                    $additionalData = Word::where('id', '!=', $word->id)->where($from, 'like', $name.'%')->take(4 - $words->count())->get();
+                    $words = $words->merge($additionalData);
+                }
+            }
+        }
+
 //        $word = Word::where('id', '!=', $word->id)->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)->get());
 
         return $words->shuffle();
