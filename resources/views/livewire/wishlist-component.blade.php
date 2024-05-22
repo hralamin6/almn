@@ -21,7 +21,7 @@
                 </div>
 
             </div>
-            <div class="flex items-center justify-between mt-2 gap-x-1">
+        <div class="flex items-center justify-between mt-2 gap-x-1">
                 @auth
                     @can('isAdmin')
                         <div>
@@ -41,7 +41,7 @@
                                         <input id="dropzone-file" type="file" class="hidden" wire:model="photo" />
                                     </label>
                                     @error('photo') <span class="text-red-500">{{ $message }}</span> @enderror
-                                    {{--                            <button type="submit" class="btn btn-primary">Import Users</button>--}}
+{{--                            <button type="submit" class="btn btn-primary">Import Users</button>--}}
                                     <div wire:loading wire:target="photo, import">...</div>
                                     <div x-show="isUploading">
                                         <progress max="100" x-bind:value="progress"></progress>
@@ -49,7 +49,7 @@
                                 </div>
                             </form>
 
-                        </div>
+                         </div>
 
                     @endcan
                 @endauth
@@ -142,20 +142,20 @@
 
                                                 <!-- Dropdown menu -->
                                                 @auth
-                                                    @can('isAdmin')
-                                                        <div x-show="bulk"
-                                                             class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
-                                                             @click.outside="bulk= false">
-                                                            <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
-                                                               class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                Delete </a>
+                                                @can('isAdmin')
+                                                <div x-show="bulk"
+                                                     class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
+                                                     @click.outside="bulk= false">
+                                                    <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
+                                                       class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                                                        Delete </a>
 
-                                                            <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
-                                                               class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                @lang('wishlist') </a>
-                                                            {{--                                                    <a wire:click.prevent="" class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Your projects </a>--}}
-                                                        </div>
-                                                    @endcan
+                                                        <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
+                                                           class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                                                            @lang('wishlist') </a>
+                                                    {{--                                                    <a wire:click.prevent="" class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Your projects </a>--}}
+                                                </div>
+                                                @endcan
                                                 @endauth
 
                                             </div>
@@ -164,20 +164,20 @@
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'name'">@lang('word')</x-field>
                                     @can('isAdmin')
-                                        <x-field :OB="$orderBy" :OD="$orderDirection"
-                                                 :field="'status'">@lang('status')</x-field>
+                                    <x-field :OB="$orderBy" :OD="$orderDirection"
+                                             :field="'status'">@lang('status')</x-field>
                                     @endcan
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'meaning'">@lang('meaning')</x-field>
-                                    {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
-                                    {{--                                             :field="'male_name'">@lang('male_name')</x-field>--}}
-                                    {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
-                                    {{--                                             :field="'female_name'">@lang('female_name')</x-field>--}}
+{{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
+{{--                                             :field="'male_name'">@lang('male_name')</x-field>--}}
+{{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
+{{--                                             :field="'female_name'">@lang('female_name')</x-field>--}}
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'gender'">@lang('gender')</x-field>
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'pop'">@lang('pop')</x-field>
-                                    <x-field>@lang('action')</x-field>
+                                        <x-field>@lang('action')</x-field>
 
 
                                 </tr>
@@ -200,36 +200,36 @@
                                             </div>
                                         </td>
                                         @can('isAdmin')
-                                            <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div
-                                                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
-                                                    <button type="button" wire:click="changeStatus({{ $item->id }})" class="cursor-pointer text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</button>
-                                                </div>
-                                            </td>
+                                                <button type="button" wire:click="changeStatus({{ $item->id }})" class="cursor-pointer text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</button>
+                                            </div>
+                                        </td>
                                         @endcan
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->meaning }}</td>
-                                        {{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->male_name }}</td>--}}
-                                        {{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->female_name }}</td>--}}
+{{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->male_name }}</td>--}}
+{{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->female_name }}</td>--}}
                                         <td class="text-sm font-normal {{ $item->gender=='male'?'text-emerald-500':($item->gender=='female'?'text-pink-500':'text-green-500')}} ">{{ $item->gender }}</td>
                                         <td class="text-sm font-normal {{ $item->pop=='noun'?'text-emerald-500':($item->pop=='adjective'?'text-pink-500':'text-green-500')}} ">{{ $item->pop }}</td>
                                         <td class="px-4 text-sm whitespace-nowrap">
                                             @auth()
-                                                <div class="flex items-center gap-x-6">
-                                                    @can('isAdmin')
-                                                        <button @click="editModal('{{$item->id}}')"
-                                                                class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
-                                                            <x-h-o-pencil-square class="text-green-400"/>
-                                                        </button>
+                                            <div class="flex items-center gap-x-6">
+                                                @can('isAdmin')
+                                                <button @click="editModal('{{$item->id}}')"
+                                                        class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                                                    <x-h-o-pencil-square class="text-green-400"/>
+                                                </button>
 
-                                                        <button
-                                                            @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteSingle', itemId: {{$item->id}} })"
-                                                            class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                                            <x-h-o-trash class="text-red-400"/>
-                                                        </button>
-                                                    @endcan
+                                                <button
+                                                    @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteSingle', itemId: {{$item->id}} })"
+                                                    class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                                    <x-h-o-trash class="text-red-400"/>
+                                                </button>
+                                                @endcan
                                                     <button wire:click="addToWishlist('{{$item->id}}')"
                                                             class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                                         @if(auth()->user()->words()->where('word_id',$item->id)->first())
@@ -239,10 +239,10 @@
                                                         @endif
                                                     </button>
 
-                                                </div>
+                                            </div>
                                             @endauth
-                                            @guest
-                                                <a href="{{ route('socialite.auth', 'google') }}"
+                                        @guest
+                                            <a href="{{ route('socialite.auth', 'google') }}"
                                                    class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                                     <x-h-o-heart class="text-green-400"/>
                                                 </a>
@@ -300,7 +300,7 @@
                             <x-input errorName="meaning" wire:model="meaning" type="text"/>
                         </div>
                         <div>
-                            <label for="male">Male</label>
+                             <label for="male">Male</label>
                             <input type="radio" wire:model="gender" value="male" id="male">
 
                             <label for="female">Female</label>
@@ -357,42 +357,42 @@
 
     @script
     <script>
-        Alpine.data('user', () => ({
-            init() {
-                $wire.on('dataAdded', (e) => {
-                    this.isOpen = false
-                    this.editMode = false
-                    element = document.getElementById(e.dataId)
-                    if (element) {
-                        console.log(element)
-                        element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    setTimeout(() => {
-                    @this.set('loadId', 0);
-                    }, 5000)
-                })
-            },
-            isOpen: false,
-            editMode: false,
-            rows: @entangle('selectedRows'),
-            selectPage: @entangle('selectPageRows').live,
-            toggleModal() {
-                this.isOpen = !this.isOpen;
-                this.$nextTick(() => {
-                    this.$refs.inputName.focus()
-                })
-            },
-            closeModal() {
-                this.isOpen = false;
-                this.editMode = false;
-                $wire.resetData()
-            },
-            editModal(id) {
-                this.$wire.loadData(id);
-                this.isOpen = true;
-                this.editMode = true;
-            }
-        }))
+            Alpine.data('user', () => ({
+                init() {
+                    $wire.on('dataAdded', (e) => {
+                        this.isOpen = false
+                            this.editMode = false
+                        element = document.getElementById(e.dataId)
+                        if (element) {
+                            console.log(element)
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        setTimeout(() => {
+                            @this.set('loadId', 0);
+                        }, 5000)
+                    })
+                },
+                isOpen: false,
+                editMode: false,
+                rows: @entangle('selectedRows'),
+                selectPage: @entangle('selectPageRows').live,
+                toggleModal() {
+                    this.isOpen = !this.isOpen;
+                    this.$nextTick(() => {
+                        this.$refs.inputName.focus()
+                    })
+                },
+                closeModal() {
+                    this.isOpen = false;
+                    this.editMode = false;
+                    $wire.resetData()
+                },
+                editModal(id) {
+                    this.$wire.loadData(id);
+                    this.isOpen = true;
+                    this.editMode = true;
+                }
+            }))
         document.addEventListener('delete', function (event) {
             itemId = event.detail.itemId
             actionName = event.detail.actionName

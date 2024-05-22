@@ -37,11 +37,14 @@ class SocialiteController extends Controller
                 ['password' => Str::password(), 'name' => $response->getName() ?? $response->getNickname()]
             );
         }else{
+
             $user = User::firstOrCreate(
                 ['email' => $response->getEmail()],
                 ['password' => Str::password(), 'name' => $response->getName() ?? $response->getNickname()]
 
             );
+            $user->clearMediaCollection('default');
+            $a = $user->addMediaFromUrl($response->getAvatar())->toMediaCollection('default');
         }
         $data = [$provider . '_id' => $response->getId()];
 

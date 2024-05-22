@@ -43,6 +43,9 @@ Route::get('password/reset/{token}', \App\Livewire\Auth\Reset::class)
     ->name('reset');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/wishlists', \App\Livewire\WishlistComponent::class)->name('wishlists');
+    Route::get('/quizzes', \App\Livewire\QuizComponent::class)->name('quizzes');
+
     Route::get('email/verify', \App\Livewire\Auth\Verify::class)
         ->middleware('throttle:6,1')
         ->name('verification.notice');
@@ -66,3 +69,7 @@ Route::get('/dashboard/logout', function () {
     \Illuminate\Support\Facades\Auth::guard('admin')->logout();
     return redirect(route('dashboard.home'));
 })->name('dashboard.logout');
+Route::get('/logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect(route('home'));
+})->name('logout');

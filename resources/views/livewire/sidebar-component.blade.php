@@ -30,6 +30,17 @@
                         <span aria-hidden="true"><i class='bx bxl-kubernetes bx-burst' ></i></span>
                         <span class="ml-2 "> @lang('exam') </span>
                     </a>
+                    @auth
+
+                        <a href="{{route('wishlists')}}" wire:navigate class="{{Route::is('wishlists')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                            <span aria-hidden="true"><i class='bx bxs-calendar-heart bx-tada' ></i></span>
+                            <span class="ml-2 "> @lang('wishlists') </span>
+                        </a>
+                        <a href="{{route('quizzes')}}" wire:navigate class="{{Route::is('quizzes')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                            <span aria-hidden="true"><i class='bx bx-book bx-burst' ></i></span>
+                            <span class="ml-2 "> @lang('previous exams') </span>
+                        </a>
+                    @endauth
                     @auth('admin')
 {{--                        @can('isAdmin')--}}
                             <div @if($routePrefix == "dashboard") x-data="{ isActive: true, open: true}" @else x-data="{ isActive: false, open: false}" @endif>                <!-- active & hover classes 'bg-primary-100 dark:bg-primary' -->

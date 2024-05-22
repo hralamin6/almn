@@ -15,7 +15,7 @@
 <?php
     $errorClass = $errors->has($errorName) ? 'border-red-500' : '';
 ?>
-<input <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => $errorClass. ' block placeholder-gray-300 w-full py-2 appearance-none text-gray-700 bg-white border border-gray-200 rounded-xl dark:bg-dark dark:text-white dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring']); ?>>
+<input style="appearance: none" <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => $errorClass. ' block placeholder-gray-300 w-full p-2 appearance-none text-gray-700 bg-white border border-gray-200 rounded-xl dark:bg-dark dark:text-white dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring']); ?>>
 <!--[if BLOCK]><![endif]--><?php $__errorArgs = [$errorName];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

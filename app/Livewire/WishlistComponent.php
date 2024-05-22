@@ -6,6 +6,7 @@ use App\Exports\WordExport;
 use App\Imports\WordImport;
 use App\Models\Setup;
 use App\Models\Word;
+use Google\Rpc\Context\AttributeContext\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -16,7 +17,7 @@ use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
 use misterspelik\LaravelPdf\Facades\Pdf;
 
-class ArabicWordComponent extends Component
+class WishlistComponent extends Component
 {
 
     use WithFileUploads;
@@ -147,7 +148,7 @@ class ArabicWordComponent extends Component
     }
     public function getDataProperty()
     {
-        return Word::where($this->searchBy, 'like', '%'.$this->search.'%')
+        return \Illuminate\Support\Facades\Auth::user()->words()->where($this->searchBy, 'like', '%'.$this->search.'%')
             ->orderBy($this->orderBy, $this->orderDirection)
             ->when($this->itemGender, function ($query) {
                 return $query->where('gender', $this->itemGender);
@@ -199,6 +200,6 @@ class ArabicWordComponent extends Component
     {
 //        $this->authorize('isAdmin');
         $items = $this->data;
-        return view('livewire.arabic-word-component', compact('items'));
+        return view('livewire.wishlist-component', compact('items'));
     }
 }

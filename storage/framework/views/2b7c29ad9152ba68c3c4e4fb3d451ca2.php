@@ -30,6 +30,17 @@
                         <span aria-hidden="true"><i class='bx bxl-kubernetes bx-burst' ></i></span>
                         <span class="ml-2 "> <?php echo app('translator')->get('exam'); ?> </span>
                     </a>
+                    <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
+
+                        <a href="<?php echo e(route('wishlists')); ?>" wire:navigate class="<?php echo e(Route::is('wishlists')?'bg-primary-100 dark:bg-primary':''); ?> flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                            <span aria-hidden="true"><i class='bx bxs-calendar-heart bx-tada' ></i></span>
+                            <span class="ml-2 "> <?php echo app('translator')->get('wishlists'); ?> </span>
+                        </a>
+                        <a href="<?php echo e(route('quizzes')); ?>" wire:navigate class="<?php echo e(Route::is('quizzes')?'bg-primary-100 dark:bg-primary':''); ?> flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                            <span aria-hidden="true"><i class='bx bx-book bx-burst' ></i></span>
+                            <span class="ml-2 "> <?php echo app('translator')->get('previous exams'); ?> </span>
+                        </a>
+                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                     <!--[if BLOCK]><![endif]--><?php if(auth()->guard('admin')->check()): ?>
 
                             <div <?php if($routePrefix == "dashboard"): ?> x-data="{ isActive: true, open: true}" <?php else: ?> x-data="{ isActive: false, open: false}" <?php endif; ?>>                <!-- active & hover classes 'bg-primary-100 dark:bg-primary' -->

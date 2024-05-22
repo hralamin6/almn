@@ -71,8 +71,8 @@
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$i+1}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz">{{$item->name}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: examplefont">{{$item->meaning}}</td>
-                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->gender}}</td>
-                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->pop}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;font-size: 2px">{{$item->gender}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;font-size: 2px">{{$item->pop}}</td>
                     </tr>
                 @empty
 

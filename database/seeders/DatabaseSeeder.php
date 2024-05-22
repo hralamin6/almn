@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make('000000')
         ]);
         Setup::factory()->count(1)->create();
-        Word::factory()->count(30)->create();
+//        Word::factory()->count(30)->create();
         \App\Models\Admin::factory(1)->create([
         ])->each(function ($user){
             Vendor::factory(1)->create([

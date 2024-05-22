@@ -49,7 +49,7 @@ return [
     'icc_profile_path' => '',
 
 
-    'default_font_size'          => '10',
+    'default_font_size'          => '14',
     'default_font'               => 'FreeSans',
     'margin_left'                => 10,
     'margin_right'               => 10,

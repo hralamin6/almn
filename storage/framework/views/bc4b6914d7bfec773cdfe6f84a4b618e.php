@@ -77,7 +77,7 @@
                 </div>
 
             </div>
-            <div class="flex items-center justify-between mt-2 gap-x-1">
+        <div class="flex items-center justify-between mt-2 gap-x-1">
                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
                         <div>
@@ -104,7 +104,7 @@ $message = $__bag->first($__errorArgs[0]); ?> <span class="text-red-500"><?php e
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
-                                    
+
                                     <div wire:loading wire:target="photo, import">...</div>
                                     <div x-show="isUploading">
                                         <progress max="100" x-bind:value="progress"></progress>
@@ -112,7 +112,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                 </div>
                             </form>
 
-                        </div>
+                         </div>
 
                     <?php endif; ?>
                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
@@ -262,20 +262,20 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                                                 <!-- Dropdown menu -->
                                                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-                                                        <div x-show="bulk"
-                                                             class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
-                                                             @click.outside="bulk= false">
-                                                            <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
-                                                               class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                Delete </a>
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
+                                                <div x-show="bulk"
+                                                     class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
+                                                     @click.outside="bulk= false">
+                                                    <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
+                                                       class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                                                        Delete </a>
 
-                                                            <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
-                                                               class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                <?php echo app('translator')->get('wishlist'); ?> </a>
-                                                            
-                                                        </div>
-                                                    <?php endif; ?>
+                                                        <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
+                                                           class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                                                            <?php echo app('translator')->get('wishlist'); ?> </a>
+                                                    
+                                                </div>
+                                                <?php endif; ?>
                                                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
                                             </div>
@@ -301,7 +301,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
 <?php endif; ?>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-                                        <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
+                                    <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => ['oB' => $orderBy,'oD' => $orderDirection,'field' => 'status']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('field'); ?>
@@ -340,10 +340,10 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component = $__componentOriginalae4c123bc9806121d87d234de2f27a3b; ?>
 <?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
 <?php endif; ?>
-                                    
-                                    
-                                    
-                                    
+
+
+
+
                                     <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => ['oB' => $orderBy,'oD' => $orderDirection,'field' => 'gender']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -382,7 +382,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component = $__componentOriginalae4c123bc9806121d87d234de2f27a3b; ?>
 <?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
 <?php endif; ?>
-                                    <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
+                                        <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('field'); ?>
@@ -423,28 +423,28 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                             </div>
                                         </td>
                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-                                            <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div
-                                                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                        <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
-                                                    <button type="button" wire:click="changeStatus(<?php echo e($item->id); ?>)" class="cursor-pointer text-sm font-normal <?php echo e($item->status=='active'?'text-emerald-500':'text-pink-500'); ?> "><?php echo e($item->status); ?></button>
-                                                </div>
-                                            </td>
+                                                <button type="button" wire:click="changeStatus(<?php echo e($item->id); ?>)" class="cursor-pointer text-sm font-normal <?php echo e($item->status=='active'?'text-emerald-500':'text-pink-500'); ?> "><?php echo e($item->status); ?></button>
+                                            </div>
+                                        </td>
                                         <?php endif; ?>
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap"><?php echo e($item->meaning); ?></td>
-                                        
-                                        
+
+
                                         <td class="text-sm font-normal <?php echo e($item->gender=='male'?'text-emerald-500':($item->gender=='female'?'text-pink-500':'text-green-500')); ?> "><?php echo e($item->gender); ?></td>
                                         <td class="text-sm font-normal <?php echo e($item->pop=='noun'?'text-emerald-500':($item->pop=='adjective'?'text-pink-500':'text-green-500')); ?> "><?php echo e($item->pop); ?></td>
                                         <td class="px-4 text-sm whitespace-nowrap">
                                             <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
-                                                <div class="flex items-center gap-x-6">
-                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-                                                        <button @click="editModal('<?php echo e($item->id); ?>')"
-                                                                class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
-                                                            <?php if (isset($component)) { $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c = $component; } ?>
+                                            <div class="flex items-center gap-x-6">
+                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
+                                                <button @click="editModal('<?php echo e($item->id); ?>')"
+                                                        class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                                                    <?php if (isset($component)) { $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal643fe1b47aec0b76658e1a0200b34b2c = $attributes; } ?>
 <?php $component = BladeUI\Icons\Components\Svg::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('h-o-pencil-square'); ?>
@@ -464,12 +464,12 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component = $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c; ?>
 <?php unset($__componentOriginal643fe1b47aec0b76658e1a0200b34b2c); ?>
 <?php endif; ?>
-                                                        </button>
+                                                </button>
 
-                                                        <button
-                                                            @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteSingle', itemId: <?php echo e($item->id); ?> })"
-                                                            class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                                            <?php if (isset($component)) { $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c = $component; } ?>
+                                                <button
+                                                    @click.prevent="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteSingle', itemId: <?php echo e($item->id); ?> })"
+                                                    class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                                    <?php if (isset($component)) { $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal643fe1b47aec0b76658e1a0200b34b2c = $attributes; } ?>
 <?php $component = BladeUI\Icons\Components\Svg::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('h-o-trash'); ?>
@@ -489,8 +489,8 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component = $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c; ?>
 <?php unset($__componentOriginal643fe1b47aec0b76658e1a0200b34b2c); ?>
 <?php endif; ?>
-                                                        </button>
-                                                    <?php endif; ?>
+                                                </button>
+                                                <?php endif; ?>
                                                     <button wire:click="addToWishlist('<?php echo e($item->id); ?>')"
                                                             class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                                         <!--[if BLOCK]><![endif]--><?php if(auth()->user()->words()->where('word_id',$item->id)->first()): ?>
@@ -538,10 +538,10 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                                         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                                                     </button>
 
-                                                </div>
+                                            </div>
                                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                                            <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->guest()): ?>
-                                                <a href="<?php echo e(route('socialite.auth', 'google')); ?>"
+                                        <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->guest()): ?>
+                                            <a href="<?php echo e(route('socialite.auth', 'google')); ?>"
                                                    class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                                     <?php if (isset($component)) { $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal643fe1b47aec0b76658e1a0200b34b2c = $attributes; } ?>
@@ -694,7 +694,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php endif; ?>
                         </div>
                         <div>
-                            <label for="male">Male</label>
+                             <label for="male">Male</label>
                             <input type="radio" wire:model="gender" value="male" id="male">
 
                             <label for="female">Female</label>
@@ -825,46 +825,46 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
     </div>
 
         <?php
-        $__scriptKey = '1770821517-0';
+        $__scriptKey = '1183736984-0';
         ob_start();
     ?>
     <script>
-        Alpine.data('user', () => ({
-            init() {
-                $wire.on('dataAdded', (e) => {
-                    this.isOpen = false
-                    this.editMode = false
-                    element = document.getElementById(e.dataId)
-                    if (element) {
-                        console.log(element)
-                        element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    setTimeout(() => {
-                    window.Livewire.find('<?php echo e($_instance->getId()); ?>').set('loadId', 0);
-                    }, 5000)
-                })
-            },
-            isOpen: false,
-            editMode: false,
-            rows: <?php if ((object) ('selectedRows') instanceof \Livewire\WireDirective) : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectedRows'->value()); ?>')<?php echo e('selectedRows'->hasModifier('live') ? '.live' : ''); ?><?php else : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectedRows'); ?>')<?php endif; ?>,
-            selectPage: <?php if ((object) ('selectPageRows') instanceof \Livewire\WireDirective) : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectPageRows'->value()); ?>')<?php echo e('selectPageRows'->hasModifier('live') ? '.live' : ''); ?><?php else : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectPageRows'); ?>')<?php endif; ?>.live,
-            toggleModal() {
-                this.isOpen = !this.isOpen;
-                this.$nextTick(() => {
-                    this.$refs.inputName.focus()
-                })
-            },
-            closeModal() {
-                this.isOpen = false;
-                this.editMode = false;
-                $wire.resetData()
-            },
-            editModal(id) {
-                this.$wire.loadData(id);
-                this.isOpen = true;
-                this.editMode = true;
-            }
-        }))
+            Alpine.data('user', () => ({
+                init() {
+                    $wire.on('dataAdded', (e) => {
+                        this.isOpen = false
+                            this.editMode = false
+                        element = document.getElementById(e.dataId)
+                        if (element) {
+                            console.log(element)
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        setTimeout(() => {
+                            window.Livewire.find('<?php echo e($_instance->getId()); ?>').set('loadId', 0);
+                        }, 5000)
+                    })
+                },
+                isOpen: false,
+                editMode: false,
+                rows: <?php if ((object) ('selectedRows') instanceof \Livewire\WireDirective) : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectedRows'->value()); ?>')<?php echo e('selectedRows'->hasModifier('live') ? '.live' : ''); ?><?php else : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectedRows'); ?>')<?php endif; ?>,
+                selectPage: <?php if ((object) ('selectPageRows') instanceof \Livewire\WireDirective) : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectPageRows'->value()); ?>')<?php echo e('selectPageRows'->hasModifier('live') ? '.live' : ''); ?><?php else : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('selectPageRows'); ?>')<?php endif; ?>.live,
+                toggleModal() {
+                    this.isOpen = !this.isOpen;
+                    this.$nextTick(() => {
+                        this.$refs.inputName.focus()
+                    })
+                },
+                closeModal() {
+                    this.isOpen = false;
+                    this.editMode = false;
+                    $wire.resetData()
+                },
+                editModal(id) {
+                    this.$wire.loadData(id);
+                    this.isOpen = true;
+                    this.editMode = true;
+                }
+            }))
         document.addEventListener('delete', function (event) {
             itemId = event.detail.itemId
             actionName = event.detail.actionName
@@ -889,4 +889,4 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
         \Livewire\store($this)->push('scripts', $__output, $__scriptKey)
     ?>
 </div>
-<?php /**PATH C:\xampp\htdocs\almn\resources\views/livewire/arabic-word-component.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\almn\resources\views/livewire/wishlist-component.blade.php ENDPATH**/ ?>
