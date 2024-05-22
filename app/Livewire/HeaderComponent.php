@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class HeaderComponent extends Component
 {
+    public $locale;
     public function updatedLocale()
     {
         session()->put('locale', $this->locale);
