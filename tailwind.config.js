@@ -24,6 +24,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['cairo', ...defaultTheme.fontFamily.sans],
+                arabic: ['"arabic"', 'sans-serif'],
+                bangla: ['"bangla"', 'sans-serif'],
             },
             colors: {
                 light: 'var(--light)',

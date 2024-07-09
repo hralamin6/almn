@@ -9,25 +9,39 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use function PHPUnit\Framework\isNull;
 
 class ExamComponent extends Component
 {
     use LivewireAlert;
 public $ans=[];
     public $item_per_page = 10, $time_per_question = 30, $same_items, $practise,$from, $options, $items, $submitted=false,
-       $correct=0, $wrong=0, $skipped=0, $negative = 0, $true_ans, $range, $is_single_page=1, $is_mcq=1, $date_time, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
+       $correct=0, $wrong=0, $skipped=0, $negative = 0, $true_ans, $range,$is_my_words=0, $is_single_page=1, $is_mcq=1, $date_time, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
     protected $queryString = [
         'practise', 'from'
     ];
     public function getDataProperty()
     {
-        if (auth()->check() && $this->isWishlist){
+        if (auth()->check() && $this->isWishlist && $this->is_my_words){
 
-            return auth()->user()->words()->inRandomOrder()->limit($this->item_per_page)->get();
+             $w = auth()->user()->words()->inRandomOrder()->where('user_id', auth()->id())
+                ->limit($this->item_per_page)->get();
+        }elseif (auth()->check() && $this->isWishlist){
+            $w = auth()->user()->words()->inRandomOrder()
+                ->limit($this->item_per_page)->get();
+        }elseif (auth()->check() && $this->is_my_words){
+            $w = Word::inRandomOrder()
+                ->when($this->is_my_words, function ($query) {
+                    return $query->where('user_id', auth()->id());
+                })
+                ->limit($this->item_per_page)->get();
         }
         else{
-            return Word::inRandomOrder()->limit($this->item_per_page)->get();
+            $w = Word::inRandomOrder()->limit($this->item_per_page)->get();
         }
+
+            return $w;
+
     }
 
     public function mount(Request $request)
@@ -51,12 +65,18 @@ public $ans=[];
         session()->has('isWishlist')? $this->isWishlist = session()->get('isWishlist'):'';
         session()->has('isToWishlist')? $this->isToWishlist = session()->get('isToWishlist'):'';
         session()->has('isSave')? $this->isSave = session()->get('isSave'):'';
+        session()->has('is_my_words')? $this->is_my_words = session()->get('is_my_words'):'';
 
         $this->ans = array_fill(0, $this->item_per_page, null);
         $this->items = $this->data;
         $this->same_items = $this->data;
-        if ($this->items->count() < $this->item_per_page){
-            $this->item_per_page = $this->items->count();
+        if ($this->items->count()>4){
+            if ($this->items->count() < $this->item_per_page){
+                $this->item_per_page = $this->items->count();
+            }
+        }else{
+            session()->flash('message', 'Your action was successful!');
+            return $this->redirect(route('practise'), navigate: true);
         }
     }
     public function submit()

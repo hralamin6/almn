@@ -175,27 +175,6 @@
 
             </div>
         </div>
-        <div class="flex space-x-2 justify-between">
-            <div>
-                <x-select id="groupBy" wire:model.live="groupBy" class="w-48 dark:bg-darker capitalize">
-                    <option value="id">@lang('group by id')</option>
-                    <option value="name">@lang('group by name')</option>
-                    <option value="meaning">@lang('group by meaning')</option>
-                    <option value="pop">@lang('group by POP')</option>
-                    <option value="status">@lang('group by status')</option>
-                    <option value="user_id">@lang('group by user')</option>
-                </x-select>
-            </div>
-            <div>
-                <x-select id="itemUserIds" wire:model.live="itemUserIds" class="w-48 dark:bg-darker capitalize">
-                    <option value="{{null}}">@lang('all users')</option>
-                    @foreach($users as $user)
-                        <option value="{{$user->id}}">{{$user->name}}</option>
-                    @endforeach
-                </x-select>
-            </div>
-
-        </div>
 
         <div class="container px-4 mx-auto">
 

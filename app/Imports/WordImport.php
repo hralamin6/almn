@@ -16,6 +16,7 @@ class WordImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new Word([
+            'user_id'     => 1,
             'name'     => $row['words'],
             'meaning'     => $row['meaning'],
             'pop'     => $row['pop'],

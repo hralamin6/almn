@@ -18,7 +18,7 @@ use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
 use misterspelik\LaravelPdf\Facades\Pdf;
 
-class ArabicWordComponent extends Component
+class MyWordComponent extends Component
 {
 
     use WithFileUploads;
@@ -181,12 +181,10 @@ class ArabicWordComponent extends Component
 //        return $records->paginate($this->itemPerPage)->withQueryString();
 
 
-        $query = Word::where($this->searchBy, 'like', '%'.$this->search.'%')
+        $query = Word::where('user_id', auth()->id())->where($this->searchBy, 'like', '%'.$this->search.'%')
             ->orderBy($this->orderBy, $this->orderDirection)
             ->when($this->itemGender, function ($query) {
                 return $query->where('gender', $this->itemGender);
-            })->when($this->itemUserIds, function ($query) {
-                return $query->where('user_id', $this->itemUserIds);
             })->when($this->itemPop, function ($query) {
                 return $query->where('pop', $this->itemPop);
             })
@@ -277,6 +275,6 @@ class ArabicWordComponent extends Component
 //        $this->authorize('isAdmin');
         $items = $this->data;
         $users = \App\Models\User::all();
-        return view('livewire.arabic-word-component', compact('items', 'users'));
+        return view('livewire.my-word-component', compact('items', 'users'));
     }
 }

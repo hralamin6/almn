@@ -46,13 +46,32 @@
             </div>
             <div class="grid grid-cols-2  justify-start gap-2  capitalize my-3">
                 <label for="is_single_page">@lang('question type')</label>
-                <x-select wire:model.live="is_mcq" class="select border border-indigo-400 dark:bg-gray-600 text-sm select-sm  max-w-xs">
-                    <option disabled selected>@lang('question type')</option>
-                    <option value="0">@lang('question answer')</option>
-                    <option value="1">@lang('multiple choice question')</option>
-                </x-select>
+                <div class="flex justify-between space-x-2">
+                    <div>
+                        <label for="MCQ">@lang('MCQ')</label>
+                        <input type="radio" wire:model.live="is_mcq" value="1" id="MCQ">
+                    </div>
+                    <div>
+                        <label for="question">@lang('question')</label>
+                        <input type="radio" wire:model.live="is_mcq" value="0" id="question">
+                    </div>
+                </div>
             </div>
-            @auth
+            <div class="grid grid-cols-2  justify-start gap-2  capitalize my-3">
+                <label for="is_single_page">@lang('words factory')</label>
+                <div class="flex justify-between space-x-2">
+                    <div>
+                        <label for="my_words">@lang('my words')</label>
+                        <input type="radio" wire:model.live="is_my_words" value="1" id="my_words">
+                    </div>
+                    <div>
+                        <label for="all_words">@lang('all words')</label>
+                        <input type="radio" wire:model.live="is_my_words" value="0" id="all_words">
+                    </div>
+                </div>
+            </div>
+
+        @auth
                 <div class="grid grid-cols-2  justify-start gap-2  capitalize my-3">
                     <label for="is_single_page">@lang('wishlist only')</label>
                     <div class="flex justify-between space-x-2">

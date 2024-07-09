@@ -69,4 +69,8 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Quiz::class);
     }
+    public function myWords()
+    {
+        return $this->hasMany(Word::class);
+    }
 }

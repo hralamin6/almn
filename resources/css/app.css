@@ -1,4 +1,12 @@
 @import url('https://unpkg.com/boxicons@latest/css/boxicons.min.css');
+@font-face {
+    font-family: 'arabic';
+    src: url('/resources/fonts/ar.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'bangla';
+    src: url('/resources/fonts/k.ttf') format('truetype');
+}
 :root {
     --light: #edf2f9;
     --dark: #454D55;

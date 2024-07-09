@@ -1,8 +1,16 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DLryQoir.css",
+    "file": "assets/app-BX2ThGf8.css",
     "src": "resources/css/app.css",
     "isEntry": true
+  },
+  "resources/fonts/ar.ttf": {
+    "file": "assets/ar-BDFn2tbD.ttf",
+    "src": "resources/fonts/ar.ttf"
+  },
+  "resources/fonts/k.ttf": {
+    "file": "assets/k-yuMnELiP.ttf",
+    "src": "resources/fonts/k.ttf"
   },
   "resources/js/app.js": {
     "file": "assets/app-l0sNRNKZ.js",

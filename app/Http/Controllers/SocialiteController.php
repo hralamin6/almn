@@ -55,7 +55,7 @@ class SocialiteController extends Controller
         $user->update($data);
         if($routePrefix == "dashboard") {
             Auth::guard('admin')->login($user, remember: true);
-            return redirect()->intended(RouteServiceProvider::DashboardHome);
+            return redirect()->intended(RouteServiceProvider::ArabicWords);
         }else{
             Auth::login($user, remember: true);
             return redirect()->intended(RouteServiceProvider::ArabicWords);

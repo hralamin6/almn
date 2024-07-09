@@ -8,7 +8,7 @@ use Livewire\Component;
 class PractiseComponent extends Component
 {
     use LivewireAlert;
-    public $is_single_page=1,$is_mcq=1, $q_number=10, $q_time=30, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
+    public $is_single_page=1,$is_my_words=0, $is_mcq=1, $q_number=10, $q_time=30, $is_minus=0, $isWishlist=0, $isToWishlist=0, $isSave=0;
 
     public function mount()
     {
@@ -23,6 +23,7 @@ class PractiseComponent extends Component
         session()->has('isWishlist')? $this->isWishlist = session()->get('isWishlist'):'';
         session()->has('isToWishlist')? $this->isToWishlist = session()->get('isToWishlist'):'';
         session()->has('isSave')? $this->isSave = session()->get('isSave'):'';
+        session()->has('is_my_words')? $this->is_my_words = session()->get('is_my_words'):'';
 
 //        $this->startPractise();
     }
@@ -37,12 +38,16 @@ class PractiseComponent extends Component
             'is_minus'=>$this->is_minus, 'is_mcq'=>$this->is_mcq,
             'isWishlist'=>$this->isWishlist,
             'isToWishlist'=>$this->isToWishlist,
-            'isSave'=>$this->isSave
+            'isSave'=>$this->isSave,
+            'is_my_words'=>$this->is_my_words
         ]);
 //        $this->alert('success', __('Successfully saved'));
     }
     public function render()
     {
+        if (session()->has('message')){
+            $this->alert('error', __('there is not enough words'));
+        }
         return view('livewire.practise-component');
     }
 }

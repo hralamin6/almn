@@ -1,5 +1,5 @@
 <div class="h-full p-4" x-data="user()">
-    @if(!$submitted)
+    <!--[if BLOCK]><![endif]--><?php if(!$submitted): ?>
         <div class="mx-auto text-center">
             <span class="countdown font-mono text-2xl">
                 <span x-text="hours" :style="`--value:${hours}`"></span>:
@@ -13,11 +13,11 @@
                      class="w-3/4 h-full text-center text-xs text-white rounded-full"></div>
             </div>
         </div>
-    @endif
+    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     <div class="text-center items-center flex justify-center">
-        @if($submitted)
+        <!--[if BLOCK]><![endif]--><?php if($submitted): ?>
 
-            @php
+            <?php
                 $greeting = '';
 
                 $persantage = $true_ans*100/$item_per_page;
@@ -30,51 +30,52 @@
       } else {
         $greeting = 'মন খারাপ করো না. পরেরবার আরো ভালো করবে!';
       }
-            @endphp
+            ?>
 
             <div class="flex md:w-1/2 mx-auto mt-2 flex-col dark:text-white text-gray-600 rounded shadow-md p-4 dark:bg-darker bg-gray-200">
                 <center>
-                <h2 class="text-xl font-bold">{{$true_ans}} out of {{$item_per_page}}</h2>
+                <h2 class="text-xl font-bold"><?php echo e($true_ans); ?> out of <?php echo e($item_per_page); ?></h2>
                 </center>
                 <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-4">
-                    {{$greeting}}
+                    <?php echo e($greeting); ?>
+
                 </div>
                 <div class="grid grid-cols-1 gap-4">
                     <div class="flex items-center justify-between px-2 py-1 rounded dark:bg-gray-700 bg-gray-300 hover:shadow-xl">
                         <span class="text-sm font-medium">Total Question</span>
-                        <span class="text-lg font-bold text-green-500">{{$item_per_page}}</span>
+                        <span class="text-lg font-bold text-green-500"><?php echo e($item_per_page); ?></span>
                     </div>
                     <div class="flex items-center justify-between px-2 py-1 rounded dark:bg-gray-700 bg-gray-300 hover:shadow-xl">
                         <span class="text-sm font-medium">Score</span>
-                        <span class="text-lg font-bold text-green-500">{{$true_ans}}</span>
+                        <span class="text-lg font-bold text-green-500"><?php echo e($true_ans); ?></span>
                     </div>
                     <div class="flex items-center justify-between px-2 py-1 rounded dark:bg-gray-700 bg-gray-300 hover:shadow-xl">
                         <span class="text-sm font-medium">Correct Answers</span>
-                        <span class="text-lg font-bold text-blue-500">{{$correct}}</span>
+                        <span class="text-lg font-bold text-blue-500"><?php echo e($correct); ?></span>
                     </div>
                     <div class="flex items-center justify-between px-2 py-1 rounded dark:bg-gray-700 bg-gray-300 hover:shadow-xl">
                         <span class="text-sm font-medium">Wrong Answers</span>
-                        <span class="text-lg font-bold text-red-500">{{$wrong}}</span>
+                        <span class="text-lg font-bold text-red-500"><?php echo e($wrong); ?></span>
                     </div>
                     <div class="flex items-center justify-between px-2 py-1 rounded dark:bg-gray-700 bg-gray-300 hover:shadow-xl">
                         <span class="text-sm font-medium">Skipped</span>
-                        <span class="text-lg font-bold text-yellow-500">{{$skipped}}</span>
+                        <span class="text-lg font-bold text-yellow-500"><?php echo e($skipped); ?></span>
                     </div>
                     <div class="flex items-center justify-between px-2 py-1 rounded dark:bg-gray-700 bg-gray-300 hover:shadow-xl">
                         <span class="text-sm font-medium">Negative mark</span>
-                        <span class="text-lg font-bold text-purple-500">{{$negative}}</span>
+                        <span class="text-lg font-bold text-purple-500"><?php echo e($negative); ?></span>
                     </div>
                 </div>
-                {{--            <button wire:click="$set('quizId', {{$quiz->id}})" class="w-full py-2 mt-2 px-4 bg-indigo-600 dark:bg-indigo-500 text-white rounded-md hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors duration-300">--}}
-                {{--                Show details--}}
-                {{--            </button>--}}
+                
+                
+                
             </div>
 
 
-        @endif
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     </div>
-    @if(!$submitted)
-        @if(!$is_single_page)
+    <!--[if BLOCK]><![endif]--><?php if(!$submitted): ?>
+        <!--[if BLOCK]><![endif]--><?php if(!$is_single_page): ?>
             <div
                 class="scrollbar-none after:inset-x-0 overflow-x-auto after:h-0.5 mt-2">
                 <ol class="z-10 flex justify-between text-sm font-medium text-gray-500">
@@ -87,59 +88,59 @@
                     </template>
                 </ol>
             </div>
-        @endif
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
         <div class="py-4 flex flex-col justify-start md:w-1/2 m-auto">
-            @foreach($items as $i => $item)
-                <div @if(!$is_single_page) x-cloak x-show="step=={{$i+1}}"
-                     @endif class=" @if(!$is_mcq) md:flex md:gap-2 justify-between @endif border border-2 rounded-lg border-purple-400 p-3 my-2">
-                    <legend class="text-lg font-medium my-1 text-gray-700 dark:text-gray-200" style="font-family: examplefont"><span>({{$i+1}})</span>
-                        <span class="text-xl font-bangla">{{$item[$from]}}?</span></legend>
-                    @if(!$is_mcq)
-                        <input type="text" placeholder="" x-model="ans[{{$i}}]"
+            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div <?php if(!$is_single_page): ?> x-cloak x-show="step==<?php echo e($i+1); ?>"
+                     <?php endif; ?> class=" <?php if(!$is_mcq): ?> md:flex md:gap-2 justify-between <?php endif; ?> border border-2 rounded-lg border-purple-400 p-3 my-2">
+                    <legend class="text-lg font-medium my-1 text-gray-700 dark:text-gray-200" style="font-family: examplefont"><span>(<?php echo e($i+1); ?>)</span>
+                        <span class="text-xl font-bangla"><?php echo e($item[$from]); ?>?</span></legend>
+                    <!--[if BLOCK]><![endif]--><?php if(!$is_mcq): ?>
+                        <input type="text" placeholder="" x-model="ans[<?php echo e($i); ?>]"
                                class="dark:bg-darker bg-gray-300 rounded-full px-2 py-1 text-lg font-bangla"/>
-                    @else
+                    <?php else: ?>
                         <ul class="grid grid-cols-2 gap-4 text-sm">
-                            @foreach($item->options($item, $practise, $from) as $j => $option)
+                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $item->options($item, $practise, $from); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j => $option): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li>
                                     <label class="flex items-center text-sm">
-                                        <input x-model="ans[{{$i}}]" value="{{$option[$practise]}}" type="radio"
+                                        <input x-model="ans[<?php echo e($i); ?>]" value="<?php echo e($option[$practise]); ?>" type="radio"
                                                class="w-4 h-4 border border-gray-300 rounded-md"/>
-                                        <span class="ml-3 text-md font-medium text-lg font-bangla">{{is_numeric($option[$practise])?number_format($option[$practise], 2):$option[$practise]}}</span>
+                                        <span class="ml-3 text-md font-medium text-lg font-bangla"><?php echo e(is_numeric($option[$practise])?number_format($option[$practise], 2):$option[$practise]); ?></span>
                                     </label>
                                 </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                         </ul>
-                    @endif
+                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
             <div class="grid grid-cols-3 justify-between capitalize gap-2 my-6">
-                @if($is_single_page)
+                <!--[if BLOCK]><![endif]--><?php if($is_single_page): ?>
                     <button wire:loading.submit.class.add="animate-pulse" @click="time=1" wire:loading.submit.attr="disabled"
                              class="px-4 py-2 capitalize bg-white mx-auto dark:bg-darker dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 transition-colors border px-4 py-2">
-                        @lang('submit')
+                        <?php echo app('translator')->get('submit'); ?>
                     </button>
-                @else
+                <?php else: ?>
                     <button x-cloak x-show="step>1" @click="step>1?step--:''" type="button"
                             :class="{'cursor-not-allowed':step<2}" class="px-4 py-2 capitalize bg-white mx-auto dark:bg-darker dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 justify-self-start">
-                        @lang('prev')
+                        <?php echo app('translator')->get('prev'); ?>
                     </button>
                     <button x-cloak x-show="step==itemPerPage"
                             class="px-4 py-2 capitalize bg-white mx-auto dark:bg-darker dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 col-start-3 justify-self-end"
                     <button wire:loading.submit.class.add="animate-pulse" @click="time=1" wire:loading.submit.attr="disabled">
-                        @lang('submit')
+                        <?php echo app('translator')->get('submit'); ?>
                     </button>
                     <button x-cloak x-show="step<itemPerPage" @click="step<itemPerPage?step++:''"
                             :class="{'cursor-not-allowed':step==itemPerPage}" type="button"
                             class="px-4 py-2 capitalize bg-white mx-auto dark:bg-darker dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 col-start-3 justify-self-end">
-                        @lang('next')
+                        <?php echo app('translator')->get('next'); ?>
                     </button>
-                @endif
+                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
             </div>
         </div>
-    @else
+    <?php else: ?>
         <div class="py-8 flex flex-col justify-start md:w-1/2 m-auto capitalize">
-            @foreach($items as $i => $item)
-                @php
+            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php
                     if ($is_mcq){
                                 $col = strtolower($item[$practise]);
                             $a = strtolower($ans[$i]);
@@ -163,35 +164,38 @@
             $is_true = false;
         }
         }
-                @endphp
+                ?>
                 <div
-                    class="border border-2 rounded-lg border-purple-400 p-3 my-2 {{$is_true?'bg-green-100 dark:bg-green-300':'bg-red-100 dark:bg-red-300'}} ">
-                    <legend class="text-lg font-medium my-1 text-gray-800"><span>({{$i+1}})</span>
-                        <span class="text-lg font-bangla"> {{$item[$from]}}?</span></legend>
+                    class="border border-2 rounded-lg border-purple-400 p-3 my-2 <?php echo e($is_true?'bg-green-100 dark:bg-green-300':'bg-red-100 dark:bg-red-300'); ?> ">
+                    <legend class="text-lg font-medium my-1 text-gray-800"><span>(<?php echo e($i+1); ?>)</span>
+                        <span class="text-lg font-bangla"> <?php echo e($item[$from]); ?>?</span></legend>
                     <ul class="grid grid-cols-2 gap-4">
                         <li>
                             <label class="flex items-center text-sm">
-{{--                                {{$col}} = {{$a}}--}}
+
                                 <span class="ml-3 text-md font-medium text-gray-800">Your ans:
                                         <span
-                                            class="{{$col === $a ?'text-green-600 dark:text-green-600':'text-pink-600'}} text-lg font-bangla">{{$ans[$i]?is_numeric($ans[$i])?number_format($ans[$i], 2):$ans[$i]:'no answer'}}</span>
+                                            class="<?php echo e($col === $a ?'text-green-600 dark:text-green-600':'text-pink-600'); ?> text-lg font-bangla"><?php echo e($ans[$i]?is_numeric($ans[$i])?number_format($ans[$i], 2):$ans[$i]:'no answer'); ?></span>
                                     </span>
                             </label>
                         </li>
                         <li>
                             <label class="flex items-center text-sm">
                                     <span class="ml-3 text-md font-medium text-gray-800">Correct ans:
-                                        <span class="text-green-600 text-lg font-bangla">{{is_numeric($item[$practise])?number_format($item[$practise], 2):$item[$practise]}}</span>
+                                        <span class="text-green-600 text-lg font-bangla"><?php echo e(is_numeric($item[$practise])?number_format($item[$practise], 2):$item[$practise]); ?></span>
                                     </span>
                             </label>
                         </li>
                     </ul>
                 </div>
-            @endforeach
-            <center><a href="{{route('exam')}}?practise={{$practise}}" class="px-4 rounded-2xl py-2 bg-violet-500 text-white w-48">@lang('again')</a></center>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+            <center><a href="<?php echo e(route('exam')); ?>?practise=<?php echo e($practise); ?>" class="px-4 rounded-2xl py-2 bg-violet-500 text-white w-48"><?php echo app('translator')->get('again'); ?></a></center>
         </div>
-    @endif
-        @script
+    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+            <?php
+        $__scriptKey = '3996615415-0';
+        ob_start();
+    ?>
         <script>
             Alpine.data('user', () => ({
                 init() {
@@ -215,9 +219,9 @@
                         })
                 },
                 openTable: $persist('ot'),
-                ans : @entangle('ans'),
-                time : {{$item_per_page*$time_per_question}},
-                itemPerPage : {{$item_per_page}},
+                ans : <?php if ((object) ('ans') instanceof \Livewire\WireDirective) : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('ans'->value()); ?>')<?php echo e('ans'->hasModifier('live') ? '.live' : ''); ?><?php else : ?>window.Livewire.find('<?php echo e($__livewire->getId()); ?>').entangle('<?php echo e('ans'); ?>')<?php endif; ?>,
+                time : <?php echo e($item_per_page*$time_per_question); ?>,
+                itemPerPage : <?php echo e($item_per_page); ?>,
                 step : 1,
                 progress : 0,
                 now: new Date().getTime(),
@@ -236,6 +240,11 @@
 
             }))
         </script>
-        @endscript
+            <?php
+        $__output = ob_get_clean();
+
+        \Livewire\store($this)->push('scripts', $__output, $__scriptKey)
+    ?>
 </div>
 
+<?php /**PATH /home/hralamin/www/almn/resources/views/livewire/exam-component.blade.php ENDPATH**/ ?>

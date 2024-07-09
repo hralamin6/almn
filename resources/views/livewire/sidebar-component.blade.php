@@ -18,6 +18,12 @@
                         <span aria-hidden="true"><i class='bx bx-home-alt bx-tada' ></i></span>
                         <span class="ml-2 "> @lang('home') </span>
                     </a>
+                    @auth
+                    <a href="{{route('my-words')}}" wire:navigate class="{{Route::is('my-words')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                        <span aria-hidden="true"><i class='bx bxl-wordpress bx-flashing' ></i></span>
+                        <span class="ml-2 "> @lang('my-words') </span>
+                    </a>
+                    @endauth
                     <a href="{{route('words')}}" wire:navigate class="{{Route::is('words')?'bg-primary-100 dark:bg-primary':''}} flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
                         <span aria-hidden="true"><i class='bx bxl-wordpress bx-flashing' ></i></span>
                         <span class="ml-2 "> @lang('words') </span>
