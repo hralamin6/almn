@@ -179,6 +179,7 @@ public $ans=[];
                         $str1 = str_split(strtolower($col));
                         $str2 = str_split(strtolower($ans));
                         $vowel = str_split('aeiouyh');
+                        dd($vowel);
                         $diff1 = array_diff($str1, $str2);
                         $diff2 = array_diff($diff1, $vowel);
                         if (strlen(implode($diff2))==0 && strlen($this->ans[$i])<13){

@@ -58,9 +58,9 @@
                 <thead>
                 <tr style="background-color: #f2f2f2;">
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('SL')</th>
-                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('Words')</th>
-                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('Meaning')</th>
-                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('Gender')</th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('words')</th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('meaning')</th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('gender')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('pop')</th>
                 </tr>
                 </thead>
@@ -69,10 +69,10 @@
 
                     <tr style="border: 1px solid #ddd;">
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$i+1}}</td>
-                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz">{{$item->name}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz">{{$item->with_harakah}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: examplefont">{{$item->meaning}}</td>
-                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;font-size: 2px">{{$item->gender}}</td>
-                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;font-size: 2px">{{$item->pop}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->gender}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->pop}}</td>
                     </tr>
                 @empty
 

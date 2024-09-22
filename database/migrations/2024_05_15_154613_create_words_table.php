@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->default(1)->constrained()->cascadeOnDelete();
             $table->string('name')->nullable();
+            $table->string('with_harakah')->nullable();
             $table->string('meaning')->nullable();
             $table->string('gender')->nullable();
             $table->string('male_name')->nullable();
             $table->string('female_name')->nullable();
             $table->string('pop')->nullable();
+            $table->text('data')->nullable();
             $table->string('status')->nullable()->default('active');
             $table->timestamps();
         });

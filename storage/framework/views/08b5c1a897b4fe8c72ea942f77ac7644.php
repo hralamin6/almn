@@ -554,7 +554,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                             <div class="inline-flex items-center gap-x-3">
                                                 <div class="flex items-center gap-x-2">
                                                     <div>
-                                                        <h2 class="font-medium text-gray-800 dark:text-white "><?php echo e($item->name); ?></h2>
+                                                        <h2 class="font-medium text-gray-800 dark:text-white "><?php echo e($item->with_harakah); ?></h2>
                                                     </div>
                                                 </div>
                                             </div>

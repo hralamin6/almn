@@ -21,8 +21,10 @@
                 <tr style="background-color: #f2f2f2;">
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('SL')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('words')</th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('with_harakah')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('meaning')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('gender')</th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('data')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('pop')</th>
                 </tr>
                 </thead>
@@ -32,8 +34,16 @@
                     <tr style="border: 1px solid #ddd;">
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$i+1}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz">{{$item->name}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz">{{$item->with_harakah}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: examplefont">{{$item->meaning}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->gender}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">
+                            @if(is_array($item->data))
+                                @foreach($item->data as $key => $value)
+                                    {{ $key }}: {{ $value. ', ' }}
+                                @endforeach
+                            @endif
+                        </td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->pop}}</td>
                     </tr>
                 @empty

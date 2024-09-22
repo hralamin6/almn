@@ -263,7 +263,7 @@
                                             <div class="inline-flex items-center gap-x-3">
                                                 <div class="flex items-center gap-x-2">
                                                     <div>
-                                                        <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->name }}</h2>
+                                                        <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->with_harakah }}</h2>
                                                     </div>
                                                 </div>
                                             </div>

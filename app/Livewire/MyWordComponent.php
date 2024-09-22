@@ -203,7 +203,7 @@ class MyWordComponent extends Component
         return response()->streamDownload(function () {
             $items= $this->data;
             $setup = Setup::first();
-            $pdf = Pdf::loadView('excel.words', compact('items', 'setup'));
+            $pdf = Pdf::loadView('pdf.words', compact('items', 'setup'));
             return $pdf->stream('words.pdf');
         }, 'words.pdf');
     }

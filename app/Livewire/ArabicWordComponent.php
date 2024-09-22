@@ -140,7 +140,7 @@ class ArabicWordComponent extends Component
     public function editData()
     {
         $data = $this->validate([
-            'name' => ['required', 'min:2', 'max:33'],
+            'name' => ['required', 'max:331'],
             'status' => ['required'],
             'gender' => ['required'],
             'male_name' => ['nullable'],
@@ -205,7 +205,7 @@ class ArabicWordComponent extends Component
         return response()->streamDownload(function () {
             $items= $this->data;
             $setup = Setup::first();
-            $pdf = Pdf::loadView('excel.words', compact('items', 'setup'));
+            $pdf = Pdf::loadView('pdf.words', compact('items', 'setup'));
             return $pdf->stream('words.pdf');
         }, 'words.pdf');
     }

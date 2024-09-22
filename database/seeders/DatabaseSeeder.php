@@ -71,6 +71,8 @@ class DatabaseSeeder extends Seeder
             });
         });
 
+        $this->call(WordSeeder::class);
+
 //        $this->call(DivisionSeeder::class);
 //        $this->call(DistrictSeeder::class);
 //        $this->call(UpazilaSeeder::class);

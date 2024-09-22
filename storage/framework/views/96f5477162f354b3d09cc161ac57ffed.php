@@ -18,6 +18,10 @@
                         <span aria-hidden="true"><i class='bx bx-home-alt bx-tada' ></i></span>
                         <span class="ml-2 "> <?php echo app('translator')->get('home'); ?> </span>
                     </a>
+                    <a href="<?php echo e(route('test')); ?>" wire:navigate class="<?php echo e(Route::is('test')?'bg-primary-100 dark:bg-primary':''); ?> flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
+                        <span aria-hidden="true"><i class='bx bxl-meta bx-tada' ></i></span>
+                        <span class="ml-2 "> <?php echo app('translator')->get('test'); ?> </span>
+                    </a>
                     <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
                     <a href="<?php echo e(route('my-words')); ?>" wire:navigate class="<?php echo e(Route::is('my-words')?'bg-primary-100 dark:bg-primary':''); ?> flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary">
                         <span aria-hidden="true"><i class='bx bxl-wordpress bx-flashing' ></i></span>

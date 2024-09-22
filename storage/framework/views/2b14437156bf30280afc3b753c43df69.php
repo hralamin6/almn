@@ -207,6 +207,14 @@
             <a href="<?php echo e(route('exam')); ?>?practise=meaning&from=pop" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
                 <span><?php echo app('translator')->get('parts of speech to meaning'); ?></span>
             </a>
+
+
+            <a href="<?php echo e(route('test')); ?>?practise=word_to_details" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span><?php echo app('translator')->get('verb to details'); ?></span>
+            </a>
+            <a href="<?php echo e(route('test')); ?>?practise=details_to_verb" wire:navigate class="m-1 bg-gradient-to-r from-purple-500 to-pink-500 flex gap-x-3 text-sm capitalize sm:text-base items-center justify-center text-white rounded-lg hover:bg-[#1877F2]/80 duration-300 transition-colors border border-transparent px-8 py-2.5">
+                <span><?php echo app('translator')->get('details to verb'); ?></span>
+            </a>
         </div>
 
     </div>

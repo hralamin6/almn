@@ -16,6 +16,7 @@ use misterspelik\LaravelPdf\Facades\Pdf;
 |
 */
 Route::get('/', \App\Livewire\HomeComponent::class)->name('home');
+Route::get('/test', \App\Livewire\TestComponent::class)->name('test');
 Route::get('/arabic-words', \App\Livewire\ArabicWordComponent::class)->name('words');
 Route::get('/my-words', \App\Livewire\MyWordComponent::class)->name('my-words');
 Route::get('/arabic-words/practise', \App\Livewire\PractiseComponent::class)->name('practise');
