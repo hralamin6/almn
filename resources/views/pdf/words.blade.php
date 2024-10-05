@@ -60,6 +60,7 @@
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('SL')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('words')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('meaning')</th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('plural')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('gender')</th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">@lang('pop')</th>
                 </tr>
@@ -71,6 +72,7 @@
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$i+1}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz">{{$item->with_harakah}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: examplefont">{{$item->meaning}}</td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: examplefont">{{$item->plural}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->gender}}</td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;">{{$item->pop}}</td>
                     </tr>

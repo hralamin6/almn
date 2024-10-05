@@ -153,8 +153,7 @@
 
         </div>
         <div class="flex space-x-2 justify-between">
-            <div
-                class="inline-flex overflow-hidden mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+            <div class="inline-flex overflow-x-auto mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
                 <button wire:click="$set('itemGender', null)"
                         class="capitalize px-2 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm text-gray-600 {{!$itemGender?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'}} ">
                     @lang('all')
@@ -171,8 +170,7 @@
                 </button>
 
             </div>
-            <div
-                class="inline-flex overflow-hidden mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+            <div class="inline-flex overflow-x-auto mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
                 <button wire:click="$set('itemPop', null)"
                         class="capitalize px-2 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm text-gray-600 {{!$itemPop?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'}} ">
                     @lang('all')
@@ -181,6 +179,18 @@
                 <button wire:click="$set('itemPop', 'noun')"
                         class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm {{$itemPop=='noun'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'}}">
                     @lang('noun')
+                </button>
+                <button wire:click="$set('itemPop', 'pronoun')"
+                        class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm {{$itemPop=='pronoun'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'}}">
+                    @lang('pronoun')
+                </button>
+                <button wire:click="$set('itemPop', 'preposition')"
+                        class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm {{$itemPop=='preposition'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'}}">
+                    @lang('preposition')
+                </button>
+                <button wire:click="$set('itemPop', 'conjuntion')"
+                        class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm {{$itemPop=='conjuntion'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'}}">
+                    @lang('conjuntion')
                 </button>
 
                 <button wire:click="$set('itemPop', 'adjective')"
@@ -277,7 +287,7 @@
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'meaning'">@lang('meaning')</x-field>
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
-                                             :field="'meaning'">@lang('plural')</x-field>
+                                             :field="'plural'">@lang('plural')</x-field>
                                     {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
                                     {{--                                             :field="'male_name'">@lang('male_name')</x-field>--}}
                                     {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}

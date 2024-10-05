@@ -307,7 +307,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
         </div>
         <div class="flex space-x-2 justify-between">
-            <div class="inline-flex overflow-hidden mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+            <div class="inline-flex overflow-x-auto mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
                 <button wire:click="$set('itemGender', null)"
                         class="capitalize px-2 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm text-gray-600 <?php echo e(!$itemGender?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'); ?> ">
                     <?php echo app('translator')->get('all'); ?>
@@ -324,7 +324,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                 </button>
 
             </div>
-            <div class="inline-flex overflow-hidden mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+            <div class="inline-flex overflow-x-auto mt-2 bg-white border divide-x rounded-lg dark:bg-darker rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
                 <button wire:click="$set('itemPop', null)"
                         class="capitalize px-2 py-2 text-xs font-medium  transition-colors duration-200 sm:text-sm text-gray-600 <?php echo e(!$itemPop?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'); ?> ">
                     <?php echo app('translator')->get('all'); ?>
@@ -333,6 +333,18 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                 <button wire:click="$set('itemPop', 'noun')"
                         class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm <?php echo e($itemPop=='noun'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'); ?>">
                     <?php echo app('translator')->get('noun'); ?>
+                </button>
+                <button wire:click="$set('itemPop', 'pronoun')"
+                        class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm <?php echo e($itemPop=='pronoun'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'); ?>">
+                    <?php echo app('translator')->get('pronoun'); ?>
+                </button>
+                <button wire:click="$set('itemPop', 'preposition')"
+                        class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm <?php echo e($itemPop=='preposition'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'); ?>">
+                    <?php echo app('translator')->get('preposition'); ?>
+                </button>
+                <button wire:click="$set('itemPop', 'conjuntion')"
+                        class="capitalize px-2 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 sm:text-sm <?php echo e($itemPop=='conjuntion'?'bg-gray-100 dark:bg-gray-800 dark:text-gray-300':'dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100'); ?>">
+                    <?php echo app('translator')->get('conjuntion'); ?>
                 </button>
 
                 <button wire:click="$set('itemPop', 'adjective')"
@@ -434,6 +446,25 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['OB' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderBy),'OD' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderDirection),'field' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('meaning')]); ?><?php echo app('translator')->get('meaning'); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
+<?php $attributes = $__attributesOriginalae4c123bc9806121d87d234de2f27a3b; ?>
+<?php unset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
+<?php $component = $__componentOriginalae4c123bc9806121d87d234de2f27a3b; ?>
+<?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
+<?php endif; ?>
+                                    <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => ['oB' => $orderBy,'oD' => $orderDirection,'field' => 'plural']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('field'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['OB' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderBy),'OD' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderDirection),'field' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('plural')]); ?><?php echo app('translator')->get('plural'); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
 <?php $attributes = $__attributesOriginalae4c123bc9806121d87d234de2f27a3b; ?>
@@ -546,6 +577,8 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla"><?php echo e($item->meaning); ?></td>
+                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla"><?php echo e($item->plural); ?></td>
+
                                         
                                         
                                         <td class="text-sm font-normal <?php echo e($item->gender=='male'?'text-emerald-500':($item->gender=='female'?'text-pink-500':'text-green-500')); ?> "><?php echo e($item->gender); ?></td>
