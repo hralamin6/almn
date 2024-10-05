@@ -88,6 +88,7 @@
                         <x-select id="searchBy" wire:model.live="searchBy" class="w-48 dark:bg-darker capitalize">
                             <option value="name">@lang('name')</option>
                             <option value="meaning">@lang('meaning')</option>
+                            <option value="pop">@lang('parts of speech')</option>
                         </x-select>
                     </div>
                 </div>
@@ -270,11 +271,13 @@
                                     <x-field :OB="$orderBy" :OD="$orderDirection"
                                              :field="'name'">@lang('word')</x-field>
                                     @can('isAdmin')
-{{--                                        <x-field :OB="$orderBy" :OD="$orderDirection" :field="'status'">@lang('status')</x-field>--}}
-{{--                                        <x-field :OB="$orderBy" :OD="$orderDirection" :field="'user_id'">@lang('creator')</x-field>--}}
+                                        {{--                                        <x-field :OB="$orderBy" :OD="$orderDirection" :field="'status'">@lang('status')</x-field>--}}
+                                        {{--                                        <x-field :OB="$orderBy" :OD="$orderDirection" :field="'user_id'">@lang('creator')</x-field>--}}
                                     @endcan
-                                    <x-field :OB="$orderBy" :OD="$orderDirection" :field="'meaning'">@lang('meaning')</x-field>
-                                    <x-field :OB="$orderBy" :OD="$orderDirection" :field="'meaning'">@lang('plural')</x-field>
+                                    <x-field :OB="$orderBy" :OD="$orderDirection"
+                                             :field="'meaning'">@lang('meaning')</x-field>
+                                    <x-field :OB="$orderBy" :OD="$orderDirection"
+                                             :field="'meaning'">@lang('plural')</x-field>
                                     {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
                                     {{--                                             :field="'male_name'">@lang('male_name')</x-field>--}}
                                     {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
@@ -306,32 +309,32 @@
                                             <div class="inline-flex items-center gap-x-3">
                                                 <div class="flex items-center gap-x-2">
                                                     <div>
-{{--                                                        <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->name }}</h2>--}}
+                                                        {{--                                                        <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->name }}</h2>--}}
                                                         <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->with_harakah }}</h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-{{--                                        @can('isAdmin')--}}
-{{--                                            <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">--}}
-{{--                                                <div--}}
-{{--                                                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">--}}
-{{--                                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>--}}
+                                        {{--                                        @can('isAdmin')--}}
+                                        {{--                                            <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">--}}
+                                        {{--                                                <div--}}
+                                        {{--                                                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">--}}
+                                        {{--                                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>--}}
 
-{{--                                                    <button type="button" wire:click="changeStatus({{ $item->id }})"--}}
-{{--                                                            class="cursor-pointer text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</button>--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
-{{--                                            <td class="px-4 text-sm font-medium text-gray-700 whitespace-nowrap">--}}
-{{--                                                <div class="inline-flex items-center gap-x-3">--}}
-{{--                                                    <div class="flex items-center gap-x-2">--}}
-{{--                                                        <div>--}}
-{{--                                                            <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->user->name }}</h2>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
-{{--                                        @endcan--}}
+                                        {{--                                                    <button type="button" wire:click="changeStatus({{ $item->id }})"--}}
+                                        {{--                                                            class="cursor-pointer text-sm font-normal {{ $item->status=='active'?'text-emerald-500':'text-pink-500' }} ">{{ $item->status }}</button>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </td>--}}
+                                        {{--                                            <td class="px-4 text-sm font-medium text-gray-700 whitespace-nowrap">--}}
+                                        {{--                                                <div class="inline-flex items-center gap-x-3">--}}
+                                        {{--                                                    <div class="flex items-center gap-x-2">--}}
+                                        {{--                                                        <div>--}}
+                                        {{--                                                            <h2 class="font-medium text-gray-800 dark:text-white ">{{ $item->user->name }}</h2>--}}
+                                        {{--                                                        </div>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </td>--}}
+                                        {{--                                        @endcan--}}
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla">{{ $item->meaning }}</td>
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla">{{ $item->plural }}</td>
@@ -341,16 +344,20 @@
                                         <td class="text-sm font-normal">
 
                                             @if(isset($item->data))
-                                                <div x-data="{open:false}" class="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                                <div x-data="{open:false}"
+                                                     class="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
                                                     <p @click="open=!open" class="text-gray-800 dark:text-gray-200">
                                                         <strong>Model Details:</strong></p>
                                                     <div x-show="open">
                                                         <div class="fixed z-10 inset-0 overflow-y-auto"
                                                              aria-labelledby="modal-title" role="dialog"
                                                              aria-modal="true">
-                                                            <div class="flex items-center justify-center min-h-screen px-4">
+                                                            <div
+                                                                class="flex items-center justify-center min-h-screen px-4">
 
-                                                                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl sm:max-w-lg sm:w-full p-6" @click.outside="open = false">
+                                                                <div
+                                                                    class="bg-white dark:bg-gray-800 rounded-lg shadow-xl sm:max-w-lg sm:w-full p-6"
+                                                                    @click.outside="open = false">
                                                                     <div class="overflow-x-auto">
 
                                                                         @php

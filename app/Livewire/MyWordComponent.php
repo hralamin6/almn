@@ -109,8 +109,6 @@ class MyWordComponent extends Component
             ],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable'],
-            'female_name' => ['nullable'],
             'meaning' => ['required'],
             'pop' => ['required'],
 
@@ -143,8 +141,6 @@ class MyWordComponent extends Component
             'name' => ['required', 'min:2', 'max:33'],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable'],
-            'female_name' => ['nullable'],
             'meaning' => ['nullable'],
             'pop' => ['required'],
             ]);

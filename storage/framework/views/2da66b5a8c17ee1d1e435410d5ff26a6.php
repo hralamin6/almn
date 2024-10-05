@@ -149,7 +149,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php unset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
 <?php endif; ?>
                     </div>
-                    <div class="relative flex items-center  md:mt-0">
+                    <div class="flex items-center  md:mt-0">
             <span class="absolute">
                 <?php if (isset($component)) { $__componentOriginal643fe1b47aec0b76658e1a0200b34b2c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal643fe1b47aec0b76658e1a0200b34b2c = $attributes; } ?>
@@ -186,6 +186,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component->withAttributes(['id' => 'searchBy','wire:model.live' => 'searchBy','class' => 'w-48 dark:bg-darker capitalize']); ?>
                             <option value="name"><?php echo app('translator')->get('name'); ?></option>
                             <option value="meaning"><?php echo app('translator')->get('meaning'); ?></option>
+                            <option value="pop"><?php echo app('translator')->get('parts of speech'); ?></option>
                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginaled2cde6083938c436304f332ba96bb7c)): ?>
@@ -494,8 +495,8 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
 <?php endif; ?>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-
-
+                                        
+                                        
                                     <?php endif; ?>
                                     <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
@@ -635,32 +636,32 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                             <div class="inline-flex items-center gap-x-3">
                                                 <div class="flex items-center gap-x-2">
                                                     <div>
-
+                                                        
                                                         <h2 class="font-medium text-gray-800 dark:text-white "><?php echo e($item->with_harakah); ?></h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
+                                        
+                                        
+                                        
+                                        
+                                        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla"><?php echo e($item->meaning); ?></td>
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla"><?php echo e($item->plural); ?></td>
@@ -670,16 +671,20 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                         <td class="text-sm font-normal">
 
                                             <!--[if BLOCK]><![endif]--><?php if(isset($item->data)): ?>
-                                                <div x-data="{open:false}" class="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                                <div x-data="{open:false}"
+                                                     class="mt-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
                                                     <p @click="open=!open" class="text-gray-800 dark:text-gray-200">
                                                         <strong>Model Details:</strong></p>
                                                     <div x-show="open">
                                                         <div class="fixed z-10 inset-0 overflow-y-auto"
                                                              aria-labelledby="modal-title" role="dialog"
                                                              aria-modal="true">
-                                                            <div class="flex items-center justify-center min-h-screen px-4">
+                                                            <div
+                                                                class="flex items-center justify-center min-h-screen px-4">
 
-                                                                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl sm:max-w-lg sm:w-full p-6" @click.outside="open = false">
+                                                                <div
+                                                                    class="bg-white dark:bg-gray-800 rounded-lg shadow-xl sm:max-w-lg sm:w-full p-6"
+                                                                    @click.outside="open = false">
                                                                     <div class="overflow-x-auto">
 
                                                                         <?php

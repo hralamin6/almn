@@ -109,8 +109,6 @@ class ArabicWordComponent extends Component
             ],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable'],
-            'female_name' => ['nullable'],
             'meaning' => ['nullable'],
             'pop' => ['required'],
 
@@ -144,8 +142,6 @@ class ArabicWordComponent extends Component
             'name' => ['required', 'max:331'],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable'],
-            'female_name' => ['nullable'],
             'meaning' => ['nullable'],
             'pop' => ['required'],
             ]);
