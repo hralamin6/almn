@@ -156,7 +156,7 @@
                         :aria-expanded="open ? 'true' : 'false'"
                         class="p-0.5 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker">
                         <span class="sr-only">User menu</span>
-                        <img class="w-10 h-10 rounded-full" src="<?php echo e(auth()->user()->getFirstMediaUrl('default')); ?>" alt="" />
+                        <img class="w-10 h-10 rounded-full" onerror="this.src='https://ui-avatars.com/api/?name=<?php echo e(auth()->user()->name); ?>&size=200&background=random&color=fff';" src="<?php echo e(auth()->user()->getFirstMediaUrl('default')); ?>"  alt="" />
 
                     </button>
                 <?php else: ?>
@@ -325,7 +325,7 @@
                         :aria-expanded="open ? 'true' : 'false'"
                         class="p-0.5 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker">
                         <span class="sr-only">User menu</span>
-                        <img class="w-10 h-10 rounded-full" src="<?php echo e(auth()->user()->getFirstMediaUrl('default')); ?>" alt="" />
+                        <img class="w-10 h-10 rounded-full" src="<?php echo e(auth()->user()->getFirstMediaUrl('default')); ?>" alt="" onerror="this.src='https://ui-avatars.com/api/?name=<?php echo e(auth()->user()->name); ?>&size=200&background=random&color=fff';" />
 
                     </button>
                 <?php else: ?>

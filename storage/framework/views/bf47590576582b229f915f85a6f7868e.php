@@ -10,7 +10,14 @@
                     placeholder="Username"
                     required
                 />
-                                @error('name')<p class="text-sm text-red-400">{{ $message }}</p>@enderror
+                                <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><p class="text-sm text-red-400"><?php echo e($message); ?></p><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                 <input wire:model.blur="email"
                     class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
@@ -19,7 +26,14 @@
                     placeholder="Email address"
                     required
                 />
-                                @error('email')<p class="text-sm text-red-400">{{ $message }}</p>@enderror
+                                <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><p class="text-sm text-red-400"><?php echo e($message); ?></p><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                 <input wire:model.blur="password"
                     class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
@@ -28,7 +42,14 @@
                     placeholder="Password"
                     required
                 />
-                                @error('password')<p class="text-sm text-red-400">{{ $message }}</p>@enderror
+                                <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><p class="text-sm text-red-400"><?php echo e($message); ?></p><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                 <input wire:model.blur="passwordConfirmation"
                     class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
@@ -37,7 +58,14 @@
                     placeholder="Confirm Password"
                     required
                 />
-                                @error('passwordConfirmation')<p class="text-sm text-red-400">{{ $message }}</p>@enderror
+                                <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['passwordConfirmation'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?><p class="text-sm text-red-400"><?php echo e($message); ?></p><?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                 <div class="flex items-center justify-between">
                     <!-- Remember me toggle -->
@@ -74,12 +102,12 @@
                 <span>OR</span>
                 <span class="w-20 h-px bg-gray-300"></span>
             </div>
-            <a href="{{ route('socialite.auth', 'google') }}" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
+            <a href="<?php echo e(route('socialite.auth', 'google')); ?>" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
             >
                 <i class='bx bxl-google bx-tada text-2xl text-white' ></i>
                 <span> Login with google </span>
             </a>
-            <a href="{{ route('socialite.auth', 'github') }}" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
+            <a href="<?php echo e(route('socialite.auth', 'github')); ?>" class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker"
             >
                 <svg
                     aria-hidden="true"
@@ -105,3 +133,4 @@
             </div>
         </div>
     </main></div>
+<?php /**PATH /home/hralamin/www/almn/resources/views/livewire/auth/register.blade.php ENDPATH**/ ?>

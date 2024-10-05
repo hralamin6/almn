@@ -33,7 +33,7 @@ Route::middleware('admin')->group(function () {
 Route::get('dashboard/login', \App\Livewire\Auth\Adminlogin::class)->name('dashboard.login');
 Route::middleware('guest')->group(function () {
     Route::get('login', \App\Livewire\Auth\Login::class)->name('login');
-//    Route::get('register', \App\Livewire\Auth\Register::class)->name('register');
+    Route::get('register', \App\Livewire\Auth\Register::class)->name('register');
     Route::get('auth/{provider}/redirect', [\App\Http\Controllers\SocialiteController::class, 'loginSocial'])->name('socialite.auth');
     Route::get('auth/{provider}/callback', [\App\Http\Controllers\SocialiteController::class, 'callbackSocial'])->name('socialite.callback');
 

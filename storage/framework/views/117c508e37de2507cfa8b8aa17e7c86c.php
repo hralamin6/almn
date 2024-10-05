@@ -53,7 +53,8 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                         <span class="ml-3 text-sm font-normal text-gray-500 dark:text-gray-400">Remember me</span>
                     </label>
 
-                    <a href="<?php echo e(route('email')); ?>" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                    <a href="<?php echo e(route('email')); ?>" wire:navigate class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                    <a href="<?php echo e(route('register')); ?>" wire:navigate class="text-sm text-blue-600 hover:underline">Create new account</a>
                 </div>
                 <div>
                     <button

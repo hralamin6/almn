@@ -10,9 +10,7 @@
                     placeholder="Email address"
                     required
                 />
-                @error('email')
-                <p class="text-sm text-red-400">{{ $message }}</p>
-                @enderror
+                @error('email')<p class="text-sm text-red-400">{{ $message }}</p>@enderror
                 <input wire:model.blur="password"
                     class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
                     type="password"
@@ -39,7 +37,8 @@
                         <span class="ml-3 text-sm font-normal text-gray-500 dark:text-gray-400">Remember me</span>
                     </label>
 
-                    <a href="{{route('email')}}" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                    <a href="{{route('email')}}" wire:navigate class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                    <a href="{{route('register')}}" wire:navigate class="text-sm text-blue-600 hover:underline">Create new account</a>
                 </div>
                 <div>
                     <button

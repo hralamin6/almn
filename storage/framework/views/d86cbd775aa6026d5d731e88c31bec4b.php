@@ -60,6 +60,7 @@
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo app('translator')->get('SL'); ?></th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo app('translator')->get('words'); ?></th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo app('translator')->get('meaning'); ?></th>
+                    <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo app('translator')->get('plural'); ?></th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo app('translator')->get('gender'); ?></th>
                     <th style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo app('translator')->get('pop'); ?></th>
                 </tr>
@@ -71,6 +72,7 @@
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo e($i+1); ?></td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz"><?php echo e($item->with_harakah); ?></td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: examplefont"><?php echo e($item->meaning); ?></td>
+                        <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd; font-family: XBRiyaz"><?php echo e($item->plural); ?></td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo e($item->gender); ?></td>
                         <td style="text-transform: capitalize; padding: 10px; border: 1px solid #ddd;"><?php echo e($item->pop); ?></td>
                     </tr>
