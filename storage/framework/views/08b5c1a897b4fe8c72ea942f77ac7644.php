@@ -418,46 +418,12 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php $component = $__componentOriginalae4c123bc9806121d87d234de2f27a3b; ?>
 <?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
 <?php endif; ?>
-                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-                                        <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => ['oB' => $orderBy,'oD' => $orderDirection,'field' => 'status']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('field'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['OB' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderBy),'OD' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderDirection),'field' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('status')]); ?><?php echo app('translator')->get('status'); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
-<?php $attributes = $__attributesOriginalae4c123bc9806121d87d234de2f27a3b; ?>
-<?php unset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
-<?php $component = $__componentOriginalae4c123bc9806121d87d234de2f27a3b; ?>
-<?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
-<?php endif; ?>
-                                        <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => ['oB' => $orderBy,'oD' => $orderDirection,'field' => 'user_id']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('field'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['OB' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderBy),'OD' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($orderDirection),'field' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('user_id')]); ?><?php echo app('translator')->get('creator'); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
-<?php $attributes = $__attributesOriginalae4c123bc9806121d87d234de2f27a3b; ?>
-<?php unset($__attributesOriginalae4c123bc9806121d87d234de2f27a3b); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalae4c123bc9806121d87d234de2f27a3b)): ?>
-<?php $component = $__componentOriginalae4c123bc9806121d87d234de2f27a3b; ?>
-<?php unset($__componentOriginalae4c123bc9806121d87d234de2f27a3b); ?>
-<?php endif; ?>
-                                    <?php endif; ?>
+
+
+
+
+
+
                                     <?php if (isset($component)) { $__componentOriginalae4c123bc9806121d87d234de2f27a3b = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalae4c123bc9806121d87d234de2f27a3b = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.field','data' => ['oB' => $orderBy,'oD' => $orderDirection,'field' => 'meaning']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -559,25 +525,25 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                                 </div>
                                             </div>
                                         </td>
-                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
-                                            <td class="px-12 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div
-                                                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
-                                                    <button type="button" wire:click="changeStatus(<?php echo e($item->id); ?>)" class="cursor-pointer text-sm font-normal <?php echo e($item->status=='active'?'text-emerald-500':'text-pink-500'); ?> "><?php echo e($item->status); ?></button>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div class="inline-flex items-center gap-x-3">
-                                                    <div class="flex items-center gap-x-2">
-                                                        <div>
-                                                            <h2 class="font-medium text-gray-800 dark:text-white "><?php echo e($item->user->name); ?></h2>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        <?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla"><?php echo e($item->meaning); ?></td>
                                         

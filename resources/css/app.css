@@ -77,6 +77,18 @@
     --color-red-darker: #6c0509;
 }
 
+
+/*.dark {*/
+/*    --color-primary: #2f1ba2; !* Dark theme base cyan *!*/
+/*    --color-primary-50: #1a3dbc; !* Dark theme lightest cyan *!*/
+/*    --color-primary-100: #82c9cf; !* Dark theme lighter cyan *!*/
+/*    --color-primary-light: #328a8f; !* Dark theme light cyan *!*/
+/*    --color-primary-lighter: #267a80; !* Dark theme lighter cyan *!*/
+/*    --color-primary-dark: #004851; !* Dark theme dark cyan *!*/
+/*    --color-primary-darker: #00323a; !* Dark theme darkest cyan *!*/
+/*}*/
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

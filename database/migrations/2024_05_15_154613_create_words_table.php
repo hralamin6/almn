@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('with_harakah')->nullable();
             $table->string('meaning')->nullable();
             $table->string('gender')->nullable();
-            $table->string('male_name')->nullable();
-            $table->string('female_name')->nullable();
+            $table->string('plural')->nullable();
             $table->string('pop')->nullable();
             $table->text('data')->nullable();
             $table->string('status')->nullable()->default('active');

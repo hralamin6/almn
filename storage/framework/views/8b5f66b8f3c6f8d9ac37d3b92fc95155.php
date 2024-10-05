@@ -30,17 +30,33 @@
             }
 
             const setColors = (color) => {
+                // alert(color)
                 const root = document.documentElement
-                root.style.setProperty('--color-primary', `var(--color-${color})`)
-                root.style.setProperty('--color-primary-50', `var(--color-${color}-50)`)
-                root.style.setProperty('--color-primary-100', `var(--color-${color}-100)`)
-                root.style.setProperty('--color-primary-light', `var(--color-${color}-light)`)
-                root.style.setProperty('--color-primary-lighter', `var(--color-${color}-lighter)`)
-                root.style.setProperty('--color-primary-dark', `var(--color-${color}-dark)`)
-                root.style.setProperty('--color-primary-darker', `var(--color-${color}-darker)`)
+                root.style.setProperty('--color-primary', color);
+                root.style.setProperty('--color-primary-50', adjustOpacity(color, 0.1));
+                root.style.setProperty('--color-primary-100', adjustOpacity(color, 0.2));
+                root.style.setProperty('--color-primary-light', adjustOpacity(color, 0.5));
+                root.style.setProperty('--color-primary-lighter', adjustOpacity(color, 0.7));
+                root.style.setProperty('--color-primary-dark', darkenRgba(color, 0.8));
+                root.style.setProperty('--color-primary-darker', darkenRgba(color, 0.6));
+
                 this.selectedColor = color
                 window.localStorage.setItem('color', color)
                 //
+            }
+            // Utility function to adjust opacity of the rgba color
+           const adjustOpacity = (color, opacity) => {
+                const rgba = color.replace(/rgba?\(/, '').replace(/\)/, '').split(',');
+                return `rgba(${rgba[0]}, ${rgba[1]}, ${rgba[2]}, ${opacity})`;
+            }
+
+            // Utility function to darken the RGBA color
+           const darkenRgba = (color, factor) => {
+                const rgba = color.replace(/rgba?\(/, '').replace(/\)/, '').split(',');
+                const r = Math.floor(rgba[0] * factor);
+                const g = Math.floor(rgba[1] * factor);
+                const b = Math.floor(rgba[2] * factor);
+                return `rgba(${r}, ${g}, ${b}, ${rgba[3] || 1})`;
             }
 
             const updateBarChart = (on) => {

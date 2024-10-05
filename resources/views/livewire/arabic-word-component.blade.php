@@ -273,8 +273,8 @@
 {{--                                        <x-field :OB="$orderBy" :OD="$orderDirection" :field="'status'">@lang('status')</x-field>--}}
 {{--                                        <x-field :OB="$orderBy" :OD="$orderDirection" :field="'user_id'">@lang('creator')</x-field>--}}
                                     @endcan
-                                    <x-field :OB="$orderBy" :OD="$orderDirection"
-                                             :field="'meaning'">@lang('meaning')</x-field>
+                                    <x-field :OB="$orderBy" :OD="$orderDirection" :field="'meaning'">@lang('meaning')</x-field>
+                                    <x-field :OB="$orderBy" :OD="$orderDirection" :field="'meaning'">@lang('plural')</x-field>
                                     {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
                                     {{--                                             :field="'male_name'">@lang('male_name')</x-field>--}}
                                     {{--                                    <x-field :OB="$orderBy" :OD="$orderDirection"--}}
@@ -334,6 +334,7 @@
 {{--                                        @endcan--}}
 
                                         <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla">{{ $item->meaning }}</td>
+                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap text-lg font-bangla">{{ $item->plural }}</td>
                                         {{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->male_name }}</td>--}}
                                         {{--                                        <td class="px-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $item->female_name }}</td>--}}
                                         <td class="text-sm font-normal {{ $item->gender=='male'?'text-emerald-500':($item->gender=='female'?'text-pink-500':'text-green-500')}} ">{{ $item->gender }}</td>

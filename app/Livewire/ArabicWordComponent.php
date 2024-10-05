@@ -111,16 +111,17 @@ class ArabicWordComponent extends Component
             'gender' => ['required'],
             'male_name' => ['nullable'],
             'female_name' => ['nullable'],
-            'meaning' => ['required'],
+            'meaning' => ['nullable'],
             'pop' => ['required'],
 
         ]);
         $data['user_id']=auth()->id();
+        $data['with_harakah']=$data['name'];
         $data = Word::create($data);
         $var = $data->id -2  ;
         $this->loadId = $data->id;
-        $this->dispatch('dataAdded', dataId: "item-id-$var");
-        $this->goToPage($this->getDataProperty()->lastPage());
+//        $this->dispatch('dataAdded', dataId: "item-id-$var");
+//        $this->goToPage($this->getDataProperty()->lastPage());
         $this->alert('success', __('Data updated successfully'));
         $this->resetData();
 

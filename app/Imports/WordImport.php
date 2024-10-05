@@ -16,16 +16,37 @@ class WordImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         $extractedData = $this->parseOneLineData($row['data']);
-        return new Word([
-            'user_id'     => 1,
-            'name'     => $row['words'],
-            'with_harakah'     => $row['with_harakah']=!null? $row['with_harakah'] :null,
-            'meaning'     => $row['meaning'],
-            'pop'     => $row['pop'],
-            'data'         => empty($extractedData)?null:$extractedData,
-            'gender'     => $row['gender'],
-            'status'     => 'active',
-        ]);
+//        return new Word([
+//            'user_id'     => 1,
+//            'name'     => $row['words'],
+//            'antonym'     => $row['antonym'],
+//            'plural'     => $row['plural'],
+//            'with_harakah'     => $row['with_harakah']=!null? $row['with_harakah'] :null,
+//            'meaning'     => $row['meaning'],
+//            'pop'     => $row['pop'],
+//            'data'         => empty($extractedData)?null:$extractedData,
+//            'gender'     => $row['gender'],
+//            'status'     => 'active',
+//        ]);
+
+        Word::updateOrCreate(
+        // Conditions for uniqueness (user_id and name)
+            [
+                'user_id' => 1,
+                'name' => $row['words']
+            ],
+            // Values to update or insert
+            [
+                'plural' => $row['plural'],
+                'with_harakah' => !empty($row['with_harakah']) ? $row['with_harakah'] : null,
+                'meaning' => $row['meaning'],
+                'pop' => $row['pop'],
+                'data' => !empty($extractedData) ? $extractedData : null,
+                'gender' => $row['gender'],
+                'status' => 'active'
+            ]
+        );
+
     }
 
 
