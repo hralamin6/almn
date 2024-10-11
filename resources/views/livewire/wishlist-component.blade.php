@@ -146,13 +146,13 @@
                                                 <div x-show="bulk"
                                                      class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
                                                      @click.outside="bulk= false">
-                                                    <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
-                                                       class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                        Delete </a>
+{{--                                                    <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"--}}
+{{--                                                       class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">--}}
+{{--                                                        Delete </a>--}}
 
                                                         <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
                                                            class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                            @lang('wishlist') </a>
+                                                            @lang('remove from wishlist') </a>
                                                     {{--                                                    <a wire:click.prevent="" class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Your projects </a>--}}
                                                 </div>
                                                 @endcan
@@ -287,14 +287,7 @@
                             <x-input errorName="name" errorName="name" x-ref="inputName" id="input" wire:model="name"
                                      type="text"/>
                         </div>
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="male_name">@lang('male_name')</label>
-                            <x-input errorName="male_name" wire:model="male_name" type="text"/>
-                        </div>
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="female_name">@lang('female_name')</label>
-                            <x-input errorName="female_name" wire:model="female_name" type="text"/>
-                        </div>
+
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="meaning">@lang('meaning')</label>
                             <x-input errorName="meaning" wire:model="meaning" type="text"/>
@@ -317,15 +310,32 @@
                             </x-select>
                             @error('gender')<p class="text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
                         </div>
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="type">@lang('pop')</label>
-                            <x-select id="pop" wire:model="pop">
-                                <option value="">@lang('select pop')</option>
-                                <option value="noun">@lang('noun')</option>
-                                <option value="adjective">@lang('adjective')</option>
-                                <option value="verb">@lang('verb')</option>
-                            </x-select>
-                            @error('pop')<p class="text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
+                        <div class="flex flex-col  justify-center space-x-4">
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="noun" id="noun">
+                                <label for="noun">Noun</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="adjective" id="adjective">
+                                <label for="adjective">Adjective</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="adverb" id="adverb">
+                                <label for="adverb">Adverb</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="preposition" id="preposition">
+                                <label for="preposition">preposition</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="conjuntion" id="conjuntion">
+                                <label for="conjuntion">conjuntion</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="verb" id="verb">
+                                <label for="verb">Verb</label>
+                            </div>
+                            @error('gender')<p class="text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
                         </div>
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="type">@lang('status')</label>

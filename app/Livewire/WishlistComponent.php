@@ -101,8 +101,6 @@ class WishlistComponent extends Component
             'name' => ['required', 'min:2', 'max:33'],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable'],
-            'female_name' => ['nullable'],
             'meaning' => ['nullable'],
             'pop' => ['required'],
 
@@ -120,8 +118,6 @@ class WishlistComponent extends Component
     {
         $this->resetData();
         $this->name = $word->name;
-        $this->male_name = $word->male_name;
-        $this->female_name = $word->female_name;
         $this->pop = $word->pop;
         $this->gender = $word->gender;
         $this->status = $word->status;
@@ -134,8 +130,6 @@ class WishlistComponent extends Component
             'name' => ['required', 'min:2', 'max:33'],
             'status' => ['required'],
             'gender' => ['required'],
-            'male_name' => ['nullable'],
-            'female_name' => ['nullable'],
             'meaning' => ['nullable'],
             'pop' => ['required'],
             ]);
@@ -176,7 +170,7 @@ class WishlistComponent extends Component
                 'status' => 1,
             ];
         }
-        auth()->user()->words()->syncWithoutDetaching($relatedData);
+        auth()->user()->words()->detach($relatedData);
         $this->alert('success', __('Added to wishlist successfully'));
     }
     public function deleteMultiple()

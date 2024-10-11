@@ -28,7 +28,7 @@
                     </div>
                     @error('gender')<p class="text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
                 </div>
-                <div class="flex justify-center space-x-4">
+                <div class="flex flex-col  justify-center space-x-4">
                     <div class="space-x-1">
                         <input type="radio" wire:model="pop" value="noun" id="noun">
                         <label for="noun">Noun</label>
@@ -36,6 +36,18 @@
                     <div class="space-x-1">
                         <input type="radio" wire:model="pop" value="adjective" id="adjective">
                         <label for="adjective">Adjective</label>
+                    </div>
+                    <div class="space-x-1">
+                        <input type="radio" wire:model="pop" value="adverb" id="adverb">
+                        <label for="adverb">Adverb</label>
+                    </div>
+                    <div class="space-x-1">
+                        <input type="radio" wire:model="pop" value="preposition" id="preposition">
+                        <label for="preposition">preposition</label>
+                    </div>
+                    <div class="space-x-1">
+                        <input type="radio" wire:model="pop" value="conjuntion" id="conjuntion">
+                        <label for="conjuntion">conjuntion</label>
                     </div>
                     <div class="space-x-1">
                         <input type="radio" wire:model="pop" value="verb" id="verb">

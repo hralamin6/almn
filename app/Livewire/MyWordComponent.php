@@ -211,7 +211,7 @@ class MyWordComponent extends Component
                 'status' => 1,
             ];
         }
-        auth()->user()->words()->detach($relatedData);
+        auth()->user()->words()->syncWithoutDetaching($relatedData);
         $this->alert('success', __('Added to wishlist successfully'));
     }
     public function createMultiple()

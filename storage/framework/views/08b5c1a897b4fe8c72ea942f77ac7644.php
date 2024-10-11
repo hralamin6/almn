@@ -72,7 +72,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                 </div>
-                <div class="flex justify-center space-x-4">
+                <div class="flex flex-col  justify-center space-x-4">
                     <div class="space-x-1">
                         <input type="radio" wire:model="pop" value="noun" id="noun">
                         <label for="noun">Noun</label>
@@ -80,6 +80,18 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                     <div class="space-x-1">
                         <input type="radio" wire:model="pop" value="adjective" id="adjective">
                         <label for="adjective">Adjective</label>
+                    </div>
+                    <div class="space-x-1">
+                        <input type="radio" wire:model="pop" value="adverb" id="adverb">
+                        <label for="adverb">Adverb</label>
+                    </div>
+                    <div class="space-x-1">
+                        <input type="radio" wire:model="pop" value="preposition" id="preposition">
+                        <label for="preposition">preposition</label>
+                    </div>
+                    <div class="space-x-1">
+                        <input type="radio" wire:model="pop" value="conjuntion" id="conjuntion">
+                        <label for="conjuntion">conjuntion</label>
                     </div>
                     <div class="space-x-1">
                         <input type="radio" wire:model="pop" value="verb" id="verb">
@@ -400,7 +412,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                                                                 <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                <?php echo app('translator')->get('wishlist'); ?> </a>
+                                                                <?php echo app('translator')->get('remove from wishlist'); ?> </a>
                                                                 <a @click="$dispatch('delete', { title: 'Do you want to add to your words', text: 'You can change it again', icon: 'success',actionName: 'createMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                                 <?php echo app('translator')->get('my words'); ?> </a>

@@ -624,52 +624,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 <?php unset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
 <?php endif; ?>
                         </div>
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="male_name"><?php echo app('translator')->get('male_name'); ?></label>
-                            <?php if (isset($component)) { $__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input','data' => ['errorName' => 'male_name','wire:model' => 'male_name','type' => 'text']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('input'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['errorName' => 'male_name','wire:model' => 'male_name','type' => 'text']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1)): ?>
-<?php $attributes = $__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1; ?>
-<?php unset($__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1)): ?>
-<?php $component = $__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1; ?>
-<?php unset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
-<?php endif; ?>
-                        </div>
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="female_name"><?php echo app('translator')->get('female_name'); ?></label>
-                            <?php if (isset($component)) { $__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input','data' => ['errorName' => 'female_name','wire:model' => 'female_name','type' => 'text']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('input'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['errorName' => 'female_name','wire:model' => 'female_name','type' => 'text']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1)): ?>
-<?php $attributes = $__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1; ?>
-<?php unset($__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1)): ?>
-<?php $component = $__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1; ?>
-<?php unset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
-<?php endif; ?>
-                        </div>
+
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="meaning"><?php echo app('translator')->get('meaning'); ?></label>
                             <?php if (isset($component)) { $__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $component; } ?>
@@ -736,33 +691,32 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                         </div>
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200" for="type"><?php echo app('translator')->get('pop'); ?></label>
-                            <?php if (isset($component)) { $__componentOriginaled2cde6083938c436304f332ba96bb7c = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginaled2cde6083938c436304f332ba96bb7c = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.select','data' => ['id' => 'pop','wire:model' => 'pop']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('select'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['id' => 'pop','wire:model' => 'pop']); ?>
-                                <option value=""><?php echo app('translator')->get('select pop'); ?></option>
-                                <option value="noun"><?php echo app('translator')->get('noun'); ?></option>
-                                <option value="adjective"><?php echo app('translator')->get('adjective'); ?></option>
-                                <option value="verb"><?php echo app('translator')->get('verb'); ?></option>
-                             <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginaled2cde6083938c436304f332ba96bb7c)): ?>
-<?php $attributes = $__attributesOriginaled2cde6083938c436304f332ba96bb7c; ?>
-<?php unset($__attributesOriginaled2cde6083938c436304f332ba96bb7c); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginaled2cde6083938c436304f332ba96bb7c)): ?>
-<?php $component = $__componentOriginaled2cde6083938c436304f332ba96bb7c; ?>
-<?php unset($__componentOriginaled2cde6083938c436304f332ba96bb7c); ?>
-<?php endif; ?>
-                            <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['pop'];
+                        <div class="flex flex-col  justify-center space-x-4">
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="noun" id="noun">
+                                <label for="noun">Noun</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="adjective" id="adjective">
+                                <label for="adjective">Adjective</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="adverb" id="adverb">
+                                <label for="adverb">Adverb</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="preposition" id="preposition">
+                                <label for="preposition">preposition</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="conjuntion" id="conjuntion">
+                                <label for="conjuntion">conjuntion</label>
+                            </div>
+                            <div class="space-x-1">
+                                <input type="radio" wire:model="pop" value="verb" id="verb">
+                                <label for="verb">Verb</label>
+                            </div>
+                            <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['gender'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
