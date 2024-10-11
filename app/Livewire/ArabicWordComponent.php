@@ -37,6 +37,14 @@ class ArabicWordComponent extends Component
     public $itemPop;
     public $photo;
     protected $queryString = [
+        'groupBy' => ['except' => ''],
+        'itemUserIds' => ['except' => ''],
+        'itemPop' => ['except' => ''],
+        'itemGender' => ['except' => ''],
+        'orderBy' => ['except' => ''],
+        'orderDirection' => ['except' => ''],
+        'itemPerPage' => ['except' => ''],
+        'searchBy' => ['except' => ''],
         'search' => ['except' => ''],
         'itemStatus' => ['except' => null],
     ];

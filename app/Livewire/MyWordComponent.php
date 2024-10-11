@@ -37,6 +37,12 @@ class MyWordComponent extends Component
     public $itemPop;
     public $photo;
     protected $queryString = [
+        'itemPop' => ['except' => ''],
+        'itemGender' => ['except' => ''],
+        'orderBy' => ['except' => ''],
+        'orderDirection' => ['except' => ''],
+        'itemPerPage' => ['except' => ''],
+        'searchBy' => ['except' => ''],
         'search' => ['except' => ''],
         'itemStatus' => ['except' => null],
     ];
