@@ -107,7 +107,11 @@ public $ans=[];
                             $this->true_ans++;
                             $correct++;
                             $que->status = 'correct';
-
+                            if ($this->isToWishlist){
+                                if ($this->isWishlist){
+                                    auth()->user()->words()->detach($question->id);
+                                }
+                            }
                         }else{
                             $wrong++;
                             $this->is_minus? $this->true_ans--:'';

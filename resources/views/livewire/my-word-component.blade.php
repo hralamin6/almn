@@ -229,7 +229,7 @@
 
                                                                 <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                @lang('wishlist') </a>
+                                                                @lang('remove from wishlist') </a>
                                                                 <a @click="$dispatch('delete', { title: 'Do you want to add to your words', text: 'You can change it again', icon: 'success',actionName: 'createMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                                 @lang('my words') </a>

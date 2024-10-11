@@ -127,8 +127,6 @@ class MyWordComponent extends Component
     {
         $this->resetData();
         $this->name = $word->name;
-        $this->male_name = $word->male_name;
-        $this->female_name = $word->female_name;
         $this->pop = $word->pop;
         $this->gender = $word->gender;
         $this->status = $word->status;
@@ -213,7 +211,7 @@ class MyWordComponent extends Component
                 'status' => 1,
             ];
         }
-        auth()->user()->words()->syncWithoutDetaching($relatedData);
+        auth()->user()->words()->detach($relatedData);
         $this->alert('success', __('Added to wishlist successfully'));
     }
     public function createMultiple()
