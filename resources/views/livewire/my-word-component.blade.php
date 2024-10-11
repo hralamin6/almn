@@ -233,15 +233,13 @@
                                                              class="absolute  z-50 left-0 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
                                                              @click.outside="bulk= false">
 
-                                                                                                                @can('isAdmin')
                                                             <a @click="$dispatch('delete', { title: 'Are you sure to delete', text: 'It is not revertable', icon: 'error',actionName: 'deleteMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                                 Delete </a>
-                                                                                                                    @endcan
 
                                                                 <a @click="$dispatch('delete', { title: 'Do you want to add to wishlist', text: 'You can change it again', icon: 'warning',actionName: 'wishListMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                                @lang('remove from wishlist') </a>
+                                                                @lang('wishlist') </a>
                                                                 <a @click="$dispatch('delete', { title: 'Do you want to add to your words', text: 'You can change it again', icon: 'success',actionName: 'createMultiple', itemId: '' })"
                                                                class="cursor-pointer block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                                                 @lang('my words') </a>

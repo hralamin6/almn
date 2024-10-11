@@ -6,7 +6,9 @@ use App\Exports\WordExport;
 use App\Imports\WordImport;
 use App\Models\Setup;
 use App\Models\Word;
+use App\Models\WordUser;
 use Google\Rpc\Context\AttributeContext\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -162,16 +164,23 @@ class WishlistComponent extends Component
     }
     public function wishListMultiple()
     {
-        $relatedData = [];
+//        $relatedData = [];
+//        foreach ($this->selectedRows as $i=> $r) {
+//            $relatedData[$r] = [
+//                'status' => 1,
+//            ];
+//        }
+//        $students = \App\StudentRegistrars::whereIn('id', $ids)->get();
+//        foreach ($students as $student) {
+//            $student->father_registrars()->detach();
+//            $student->mother_registrars()->detach();
+//        }
+//
+//        auth()->user()->words()->detach($relatedData);
 
-// Loop through logic to populate the array
-        foreach ($this->selectedRows as $i=> $r) {
-            $relatedData[$r] = [
-                'status' => 1,
-            ];
-        }
-        auth()->user()->words()->detach($relatedData);
+        WordUser::whereIn('word_id', $this->selectedRows)->delete();
         $this->alert('success', __('removed from wishlist successfully'));
+
     }
     public function deleteMultiple()
     {

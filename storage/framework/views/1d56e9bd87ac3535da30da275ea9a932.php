@@ -262,7 +262,6 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
 
                                                 <!-- Dropdown menu -->
                                                 <!--[if BLOCK]><![endif]--><?php if(auth()->guard()->check()): ?>
-                                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('isAdmin')): ?>
                                                 <div x-show="bulk"
                                                      class="absolute left-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800"
                                                      @click.outside="bulk= false">
@@ -275,7 +274,6 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                                                             <?php echo app('translator')->get('remove from wishlist'); ?> </a>
                                                     
                                                 </div>
-                                                <?php endif; ?>
                                                 <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
                                             </div>
