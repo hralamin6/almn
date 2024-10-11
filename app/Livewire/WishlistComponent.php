@@ -171,7 +171,7 @@ class WishlistComponent extends Component
             ];
         }
         auth()->user()->words()->detach($relatedData);
-        $this->alert('success', __('Added to wishlist successfully'));
+        $this->alert('success', __('removed from wishlist successfully'));
     }
     public function deleteMultiple()
     {
