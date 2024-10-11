@@ -77,7 +77,7 @@
 
                 <div class="flex items-center justify-between space-x-2 capitalize">
                     <div class=" md:mt-0 w-24 md:w-48">
-                        <x-input wire:model.live="itemPerPage" type="number" class="appearance-hidden dark:bg-darker"/>
+                        <x-input wire:model.blur="itemPerPage" type="number" class="appearance-hidden dark:bg-darker"/>
                     </div>
                     <div class="relative flex items-center  md:mt-0">
             <span class="absolute">

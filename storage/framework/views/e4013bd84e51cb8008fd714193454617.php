@@ -115,7 +115,7 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
             <div class="grid grid-cols-3 justify-between capitalize gap-2 my-6">
                 <!--[if BLOCK]><![endif]--><?php if($is_single_page): ?>
-                    <button wire:loading.submit.class.add="animate-pulse" @click="$wire.set('ans', ans),
+                    <button wire:loading.submit.remove @click="$wire.set('ans', ans),
                             $wire.submit(), clearInterval(counter)" wire:loading.submit.attr="disabled"
                              class="px-4 py-2 capitalize bg-white mx-auto dark:bg-darker dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 transition-colors border px-4 py-2">
                         <?php echo app('translator')->get('submit'); ?>
@@ -127,7 +127,10 @@
                     </button>
                     <button x-cloak x-show="step==itemPerPage"
                             class="px-4 py-2 capitalize bg-white mx-auto dark:bg-darker dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 col-start-3 justify-self-end"
-                    <button wire:loading.submit.class.add="animate-pulse" @click="$wire.set('ans', ans),
+                    <button
+                        wire:loading.submit.remove
+
+                        @click="$wire.set('ans', ans),
                             $wire.submit(), clearInterval(counter)" wire:loading.submit.attr="disabled">
                         <?php echo app('translator')->get('submit'); ?>
                     </button>

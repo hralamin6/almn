@@ -24,7 +24,7 @@ public $ans=[];
     {
         if (auth()->check() && $this->isWishlist && $this->is_my_words){
 
-             $w = auth()->user()->words()->inRandomOrder()->where('user_id', auth()->id())
+             $w = auth()->user()->words()->inRandomOrder()->where('words.user_id', auth()->id())
                 ->limit($this->item_per_page)->get();
         }elseif (auth()->check() && $this->isWishlist){
             $w = auth()->user()->words()->inRandomOrder()
@@ -132,7 +132,11 @@ public $ans=[];
                             $this->true_ans++;
                             $correct++;
                             $que->status = 'correct';
-
+                            if ($this->isToWishlist){
+                                if ($this->isWishlist){
+                                    auth()->user()->words()->detach($question->id);
+                                }
+                            }
                         }else{
                             $wrong++;
                             $this->is_minus? $this->true_ans--:'';

@@ -78,14 +78,15 @@ class Word extends Model
             if ($practise==='meaning'){
                 $name = mb_substr($word->name, 0, 1);
                 $meaning = mb_substr($word->meaning, 0, 1);
-                $words = Word::where('id', '!=', $word->id)->where($practise, 'like', $meaning.'%')->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)
+                $words = Word::where('id', '!=', $word->id)->where($from, '!=', $word->name)->where($practise, 'like', $meaning.'%')->inRandomOrder()->limit(3)->get()->merge(Word::where('id', $word->id)
                     ->whereIn('id', function ($query) {
                         $query->select(DB::raw('MIN(id)'))
                             ->from('words')
                             ->groupBy('name');
-                    })->get());
+                    })
+                    ->get());
                 if ($words->count() < 4) {
-                    $additionalData = Word::where('id', '!=', $word->id)->where($from, 'like', $name.'%')->take(4 - $words->count())->get();
+                    $additionalData = Word::where('id', '!=', $word->id)->where($from, '!=', $word->name)->where($from, 'like', $name.'%')->take(4 - $words->count())->get();
                     $words = $words->merge($additionalData);
                 }
             }
